@@ -2,13 +2,13 @@
 
 Parse xmind file to programmable data type (e.g. json, xml). Python 3.x required.
 
-# Installation
+## Installation
 
 ```shell
 pip install xmindparser
 ```
 
-# Usage - Command Line
+## Usage - Command Line
 
 ```shell
 cd /your/xmind/dir
@@ -18,7 +18,7 @@ xmindparser your.xmind -xml #TODO
 xmindparser your.xmin  -html #TODO
 ```
 
-# Usage - via Python
+## Usage - via Python
 
 ```python
 from xmindparser import xmind_to_dict
@@ -27,7 +27,7 @@ d = xmind_to_dict('/path/to/your/xmind')
 print(d)
 ```
 
-# Limitations
+## Limitations
 
 Please note, following xmind features will not be supported or partially supported.
 
@@ -41,13 +41,13 @@ Please note, following xmind features will not be supported or partially support
 - Will not parse image object, only name it as `[Image]`
 - Rich text format in notes will be parsed as plain text.
 
-# Examples
+## Examples
 
 - example xmind file
 - xmind to json example
 - xmind to xml example [TODO]
 - xmind to html example [TODO]
 
-# License
+## License
 
 MIT
