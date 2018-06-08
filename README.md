@@ -8,16 +8,17 @@ Parse xmind file to programmable data type (e.g. json, xml). Python 3.x required
 pip install xmindparser
 ```
 
-# Usage - command
+# Usage - Command Line
 
 ```shell
-cd /path/to/xmind/dir
+cd /your/xmind/dir
+
 xmindparser your.xmind -json
 xmindparser your.xmind -xml #TODO
 xmindparser your.xmin  -html #TODO
 ```
 
-# Usage - with Python
+# Usage - via Python
 
 ```python
 from xmindparser import xmind_to_dict
@@ -28,7 +29,7 @@ print(d)
 
 # Limitations
 
-Please note, following xmind features will not support or partially supported.
+Please note, following xmind features will not be supported or partially supported.
 
 - Will not parse Pro features, e.g. Task Info, Audio Note
 - Will not parse floating topics.
@@ -42,7 +43,7 @@ Please note, following xmind features will not support or partially supported.
 
 # Examples
 
-- source xmind file
+- example xmind file
 - xmind to json example
 - xmind to xml example [TODO]
 - xmind to html example [TODO]
