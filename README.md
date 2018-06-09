@@ -2,6 +2,10 @@
 
 Parse xmind file to programmable data type (e.g. json, xml). Python 3.x required.
 
+See also: [xmind2testlink](https://github.com/tobyqin/xmind2testlink)
+
+**This project is still in development, will release 1st version in 1 week.**
+
 ## Installation
 
 ```shell

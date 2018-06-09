@@ -6,6 +6,7 @@ __pycache__/
 out/
 .idea/
 .pytest_cache/
+out/
 
 # C extensions
 *.so

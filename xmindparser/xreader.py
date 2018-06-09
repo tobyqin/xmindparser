@@ -1,10 +1,11 @@
 import logging
 import re
+import sys
 from xml.etree import ElementTree as  ET
 from xml.etree.ElementTree import Element
 from zipfile import ZipFile
+
 from . import config
-import sys
 
 cache = {}
 content_xml = "content.xml"
@@ -41,7 +42,7 @@ def get_sheet_count():
     count = 0
 
     for _ in tree.find('sheet'):
-        if  _:
+        if _:
             count += 1
 
     return count
@@ -57,33 +58,35 @@ def get_root_topic(sheet_index):
     return tree.find('./sheet[{}]'.format(sheet_index)).find('topic')
 
 
-# def check_xmind():
-#     """check xmind contains valid topics and return root topic node."""
-#     tree = xmind_content_to_etree(cache[content_xml])
-#     assert isinstance(tree, Element)
-#
-#     try:
-#         root_topic_node = tree.find('sheet').find('topic')
-#         logging.info("Parse topic: {}".format(title_of(root_topic_node)))
-#     except:
-#         logging.error('Cannot find any topic in your xmind!')
-#         raise
-#
-#     return root_topic_node
-
-
 def node_to_dict(node):
     """parse Element to dict data type."""
-    title = title_of(node)
-    comment = comments_of(node)
-    note = note_of(node)
-    makers = maker_of(node)
     child = children_topics_of(node)
-    d = {'title': title, 'comment': comment, 'note': note, 'makers': makers}
+
+    d = {'title': title_of(node),
+         'comment': comments_of(node),
+         'note': note_of(node),
+         'makers': maker_of(node),
+         'link': link_of(node)}
+
+    if d['link']:
+
+        if d['link'].startswith('xmind'):
+            d['link'] = '[To another xmind topic!]'
+
+        if d['link'].startswith('xap:attachments'):
+            del d['link']
+            d['title'] = '[Attachment]{0}'.format(d['title'])
+
     if child:
         d['topics'] = []
         for c in child:
             d['topics'].append(node_to_dict(c))
+
+    if config['showTopicId']:
+        d['id'] = id_of(node)
+
+    if config['hideEmptyField']:
+        d = {k: v for k, v in d.items() if v is not None or (isinstance(v, list) and len(v) > 0)}
 
     return d
 
@@ -91,6 +94,12 @@ def node_to_dict(node):
 def xmind_content_to_etree(content):
     # Remove the default namespace definition (xmlns="http://some/namespace")
     xml_content = re.sub(r'\sxmlns="[^"]+"', '', content, count=1)
+
+    # Replace xml tag with namespace
+    xml_content = xml_content.replace('<xhtml:img', '<img')
+
+    # Replace link attrib with namespace
+    xml_content = xml_content.replace('xlink:href', 'href')
     return ET.fromstring(xml_content.encode('utf-8'))
 
 
@@ -106,17 +115,43 @@ def comments_of(node):
 
         if node_id:
             xml_root = xmind_content_to_etree(cache[comments_xml])
-            comment = xml_root.find('./comment[@object-id="{}"]'.format(node_id))
+            comments = xml_root.findall('./comment[@object-id="{}"]'.format(node_id))
 
-            if comment is not None:
-                return comment.find('content').text
+            if comments is not None:
+                out = []
+
+                for c in comments:
+                    if c is not None:
+                        text = c.find('content').text
+                        author = c.attrib.get('author', None)
+                        out.append({'author': author, 'content': text})
+
+                    return out
+
+
+def id_of(node):
+    return node.attrib.get('id', None)
+
+
+def image_of(node):
+    img = node.find('img')
+
+    if img is not None:
+        return '[Image]'
+
+
+def link_of(node):
+    return node.attrib.get('href', None)
 
 
 def title_of(node):
+    if image_of(node):
+        return image_of(node)
+
     title = node.find('title')
 
     if title is not None:
-        return title.text
+        return title.text or '[Blank]'
 
 
 def note_of(topic_node):
@@ -130,6 +165,7 @@ def note_of(topic_node):
 def debug_node(node, comments):
     s = ET.tostring(node)
     logger.debug('{}: {}'.format(comments, s))
+    return s
 
 
 def maker_of(topic_node, maker_prefix=None):

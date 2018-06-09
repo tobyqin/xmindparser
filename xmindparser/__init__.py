@@ -4,7 +4,9 @@ Parse xmind to programmable data types.
 
 config = {'logName': __name__,
           'logLevel': None,
-          'logFormat': '%(asctime)s %(levelname)-8s: %(message)s'}
+          'logFormat': '%(asctime)s %(levelname)-8s: %(message)s',
+          'showTopicId': False,
+          'hideEmptyField': True}
 
 
 def xmind_to_dict(file_path):
