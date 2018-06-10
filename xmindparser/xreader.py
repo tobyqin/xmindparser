@@ -36,26 +36,32 @@ def open_xmind(file_path):
                     cache[key] = xmind.open(f).read().decode('utf-8')
 
 
-def get_sheet_count():
+def get_sheets():
+    """get all sheet as generator and yield."""
     tree = xmind_content_to_etree(cache[content_xml])
     assert isinstance(tree, Element)
-    count = 0
 
-    for _ in tree.find('sheet'):
-        if _:
-            count += 1
-
-    return count
+    for sheet in tree.findall('sheet'):
+        yield sheet
 
 
-def get_sheet_title(sheet_index):
-    tree = xmind_content_to_etree(cache[content_xml])
-    return tree.find('./sheet[{}]'.format(sheet_index)).find('title').text
+def sheet_to_dict(sheet):
+    """convert a sheet to dict type."""
+    topic = sheet.find('topic')
+    result = {'title': title_of(sheet), 'topic': node_to_dict(topic), 'structure': get_sheet_structure(sheet)}
+
+    if config['showTopicId']:
+        result['id'] = sheet.attrib['id']
+
+    if config['hideEmptyField']:
+        result = {k: v for k, v in result.items() if v}
+
+    return result
 
 
-def get_root_topic(sheet_index):
-    tree = xmind_content_to_etree(cache[content_xml])
-    return tree.find('./sheet[{}]'.format(sheet_index)).find('topic')
+def get_sheet_structure(sheet):
+    root_topic = sheet.find('topic')
+    return root_topic.attrib.get('structure-class', None)
 
 
 def node_to_dict(node):
@@ -86,7 +92,7 @@ def node_to_dict(node):
         d['id'] = id_of(node)
 
     if config['hideEmptyField']:
-        d = {k: v for k, v in d.items() if v is not None or (isinstance(v, list) and len(v) > 0)}
+        d = {k: v for k, v in d.items() if v}
 
     return d
 
@@ -115,18 +121,19 @@ def comments_of(node):
 
         if node_id:
             xml_root = xmind_content_to_etree(cache[comments_xml])
-            comments = xml_root.findall('./comment[@object-id="{}"]'.format(node_id))
+            result = []
 
-            if comments is not None:
-                out = []
+            for c in xml_root.findall('comment'):
 
-                for c in comments:
-                    if c is not None:
-                        text = c.find('content').text
-                        author = c.attrib.get('author', None)
-                        out.append({'author': author, 'content': text})
+                if c.attrib['object-id'] == node_id:
+                    i = {'author': c.attrib['author'], 'content': c.find('content').text}
 
-                    return out
+                    if config['showTopicId']:
+                        i['id'] = c.attrib['object-id']
+
+                    result.append(i)
+
+            return result if result else None
 
 
 def id_of(node):
