@@ -47,8 +47,10 @@ Please note, following xmind features will not be supported or partially support
 
 ## Examples
 
-- example xmind file
-- xmind to json example
+![Xmind Example](doc/xmind.png)
+[(Download this file)](tests/test.xmind)
+
+- xmind to [json example](doc/example.json)
 - xmind to xml example [TODO]
 - xmind to html example [TODO]
 
