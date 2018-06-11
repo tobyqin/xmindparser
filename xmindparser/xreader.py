@@ -72,6 +72,7 @@ def node_to_dict(node):
          'comment': comments_of(node),
          'note': note_of(node),
          'makers': maker_of(node),
+         'labels': labels_of(node),
          'link': link_of(node)}
 
     if d['link']:
@@ -161,8 +162,19 @@ def title_of(node):
         return title.text or '[Blank]'
 
 
-def note_of(topic_node):
-    note_node = topic_node.find('notes')
+def labels_of(node):
+    label_node = node.find('labels')
+
+    if label_node is not None:
+        labels = []
+        for _ in label_node.findall('label'):
+            labels.append(_.text)
+
+        return labels if labels else None
+
+
+def note_of(node):
+    note_node = node.find('notes')
 
     if note_node is not None:
         note = note_node.find('plain').text
