@@ -4,8 +4,6 @@ Parse xmind file to programmable data type (e.g. json, xml). Python 3.x required
 
 See also: [xmind2testlink](https://github.com/tobyqin/xmind2testlink)
 
-**This project is still in development, will release 1st version in 1 week.**
-
 ## Installation
 
 ```shell
@@ -18,9 +16,10 @@ pip install xmindparser
 cd /your/xmind/dir
 
 xmindparser your.xmind -json
-xmindparser your.xmind -xml #TODO
-xmindparser your.xmin  -html #TODO
+xmindparser your.xmind -xml
 ```
+
+Note: Parse to xml file type require [dicttoxml](https://pypi.org/project/dicttoxml/).
 
 ## Usage - via Python
 
@@ -51,8 +50,7 @@ Please note, following xmind features will not be supported or partially support
 [(Download this file)](tests/test.xmind)
 
 - xmind to [json example](doc/example.json)
-- xmind to xml example [TODO]
-- xmind to html example [TODO]
+- xmind to [xml example](doc/example.xml)
 
 ## License
 

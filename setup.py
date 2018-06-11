@@ -3,7 +3,7 @@ Documentation
 -------------
 xmindparser is a tool to help you convert xmind file to programmable data type, e.g. json, xml.
 
-For more detail, please go to: <https://github.com/tobyqin/xmindparser>
+Detail usage: https://github.com/tobyqin/xmindparser
 
 """
 from codecs import open
@@ -39,7 +39,7 @@ def main():
         keywords="xmind converter json xml html",
         long_description=long_description,
         classifiers=classifiers,
-        version="1.0.0",
+        version="1.0.1",
         author="Toby Qin",
         author_email="toby.qin@live.com",
         url="https://github.com/tobyqin/xmindparser",
