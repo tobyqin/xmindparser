@@ -9,7 +9,7 @@ config = {'logName': __name__,
           'logLevel': None,
           'logFormat': '%(asctime)s %(levelname)-8s: %(message)s',
           'showTopicId': False,
-          'hideEmptyField': True}
+          'hideEmptyValue': True}
 
 
 def _get_out_file_name(xmind_file, suffix):

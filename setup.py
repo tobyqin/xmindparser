@@ -39,7 +39,7 @@ def main():
         keywords="xmind converter json xml html",
         long_description=long_description,
         classifiers=classifiers,
-        version="1.0.1",
+        version="1.0.2",
         author="Toby Qin",
         author_email="toby.qin@live.com",
         url="https://github.com/tobyqin/xmindparser",

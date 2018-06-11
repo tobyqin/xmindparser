@@ -32,6 +32,26 @@ d = xmind_to_dict('/path/to/your/xmind')
 print(d)
 ```
 
+## Configurations
+
+If you use `xmindparser` via Python, it provides a `config` object, see this example:
+
+```python
+import logging
+from xmindparser import xmind_to_dict,config
+
+config = {'logName': 'your_log_name',
+          'logLevel': logging.DEBUG,
+          'logFormat': '%(asctime)s %(levelname)-8s: %(message)s',
+          'showTopicId': True, # internal id will be included, default = False
+          'hideEmptyValue': False  # empty values will be hidden, default = True
+          }
+
+d = xmind_to_dict('/path/to/your/xmind')
+print(d)
+
+```
+
 ## Limitations
 
 Please note, following xmind features will not be supported or partially supported.
