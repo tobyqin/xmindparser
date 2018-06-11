@@ -1,5 +1,7 @@
 # xmindparser
 
+[![PyPI](https://img.shields.io/pypi/v/xmindparser.svg)](https://pypi.org/project/xmindparser/)
+
 Parse xmind file to programmable data type (e.g. json, xml). Python 3.x required.
 
 See also: [xmind2testlink](https://github.com/tobyqin/xmind2testlink)
