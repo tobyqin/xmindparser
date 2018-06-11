@@ -1,10 +1,10 @@
 # xmindparser
 
+[![PyPI](https://img.shields.io/pypi/v/xmindparser.svg)](https://pypi.org/project/xmindparser/)
+
 Parse xmind file to programmable data type (e.g. json, xml). Python 3.x required.
 
 See also: [xmind2testlink](https://github.com/tobyqin/xmind2testlink)
-
-**This project is still in development, will release 1st version in 1 week.**
 
 ## Installation
 
@@ -18,9 +18,10 @@ pip install xmindparser
 cd /your/xmind/dir
 
 xmindparser your.xmind -json
-xmindparser your.xmind -xml #TODO
-xmindparser your.xmin  -html #TODO
+xmindparser your.xmind -xml
 ```
+
+Note: Parse to xml file type require [dicttoxml](https://pypi.org/project/dicttoxml/).
 
 ## Usage - via Python
 
@@ -29,6 +30,26 @@ from xmindparser import xmind_to_dict
 
 d = xmind_to_dict('/path/to/your/xmind')
 print(d)
+```
+
+## Configurations
+
+If you use `xmindparser` via Python, it provides a `config` object, see this example:
+
+```python
+import logging
+from xmindparser import xmind_to_dict,config
+
+config = {'logName': 'your_log_name',
+          'logLevel': logging.DEBUG,
+          'logFormat': '%(asctime)s %(levelname)-8s: %(message)s',
+          'showTopicId': True, # internal id will be included, default = False
+          'hideEmptyValue': False  # empty values will be hidden, default = True
+          }
+
+d = xmind_to_dict('/path/to/your/xmind')
+print(d)
+
 ```
 
 ## Limitations
@@ -51,8 +72,7 @@ Please note, following xmind features will not be supported or partially support
 [(Download this file)](tests/test.xmind)
 
 - xmind to [json example](doc/example.json)
-- xmind to xml example [TODO]
-- xmind to html example [TODO]
+- xmind to [xml example](doc/example.xml)
 
 ## License
 

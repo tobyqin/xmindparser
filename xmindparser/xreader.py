@@ -53,7 +53,7 @@ def sheet_to_dict(sheet):
     if config['showTopicId']:
         result['id'] = sheet.attrib['id']
 
-    if config['hideEmptyField']:
+    if config['hideEmptyValue']:
         result = {k: v for k, v in result.items() if v}
 
     return result
@@ -92,7 +92,7 @@ def node_to_dict(node):
     if config['showTopicId']:
         d['id'] = id_of(node)
 
-    if config['hideEmptyField']:
+    if config['hideEmptyValue']:
         d = {k: v for k, v in d.items() if v}
 
     return d
