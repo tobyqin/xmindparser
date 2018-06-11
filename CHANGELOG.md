@@ -1,6 +1,10 @@
 Change Log
 ----------
 
+1.0.4
+
+- Support parse label feature.
+
 1.0.2
 
 - Rename config key names.

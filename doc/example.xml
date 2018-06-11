@@ -1,224 +1,227 @@
 <?xml version="1.0" encoding="utf8"?>
 <root>
-    <item type="dict">
-        <title type="str">Sheet 1</title>
-        <structure type="str">org.xmind.ui.map.unbalanced</structure>
-        <topic type="dict">
-            <title type="str">test</title>
-            <makers type="list">
-                <item type="str">star-orange</item>
-            </makers>
-            <topics type="list">
-                <item type="dict">
-                    <title type="str">a</title>
-                    <link type="str">http://test.com</link>
-                    <topics type="list">
-                        <item type="dict">
-                            <title type="str">e</title>
-                            <topics type="list">
-                                <item type="dict">
-                                    <title type="str">f</title>
-                                    <topics type="list">
-                                        <item type="dict">
-                                            <title type="str">g</title>
-                                        </item>
-                                    </topics>
-                                </item>
-                            </topics>
-                        </item>
-                        <item type="dict">
-                            <title type="str">d</title>
-                            <topics type="list">
-                                <item type="dict">
-                                    <title type="str">[Blank]</title>
-                                </item>
-                            </topics>
-                        </item>
-                        <item type="dict">
-                            <title type="str">e</title>
-                            <makers type="list">
-                                <item type="str">symbol-plus</item>
-                            </makers>
-                            <topics type="list">
-                                <item type="dict">
-                                    <title type="str">[Blank]</title>
-                                    <note type="str">this is a note</note>
-                                </item>
-                            </topics>
-                        </item>
-                        <item type="dict">
-                            <title type="str">[Blank]</title>
-                            <topics type="list">
-                                <item type="dict">
-                                    <title type="str">h</title>
-                                    <topics type="list">
-                                        <item type="dict">
-                                            <title type="str">[Blank]</title>
-                                            <comment type="list">
-                                                <item type="dict">
-                                                    <content type="str">this a comments</content>
-                                                    <author type="str">toby.qin</author>
-                                                </item>
-                                            </comment>
-                                        </item>
-                                    </topics>
-                                </item>
-                            </topics>
-                        </item>
-                    </topics>
-                </item>
-                <item type="dict">
-                    <title type="str">b</title>
-                    <makers type="list">
-                        <item type="str">task-done</item>
-                        <item type="str">flag-red</item>
-                        <item type="str">people-red</item>
-                        <item type="str">arrow-up</item>
-                    </makers>
-                    <topics type="list">
-                        <item type="dict">
-                            <title type="str">types</title>
-                            <topics type="list">
-                                <item type="dict">
-                                    <title type="str">comment</title>
-                                    <comment type="list">
-                                        <item type="dict">
-                                            <content type="str">comment1</content>
-                                            <author type="str">toby.qin</author>
-                                        </item>
-                                        <item type="dict">
-                                            <content type="str">comment2</content>
-                                            <author type="str">toby.qin</author>
-                                        </item>
-                                        <item type="dict">
-                                            <content type="str">comment3
-                                                new line
-                                            </content>
-                                            <author type="str">toby.qin</author>
-                                        </item>
-                                    </comment>
-                                </item>
-                                <item type="dict">
-                                    <title type="str">note</title>
-                                    <topics type="list">
-                                        <item type="dict">
-                                            <title type="str">note2</title>
-                                            <note type="str">line1
-                                                line2
-                                            </note>
-                                        </item>
-                                        <item type="dict">
-                                            <title type="str">note3</title>
-                                            <note type="str">note with style
-                                                line with strike
-                                            </note>
-                                        </item>
-                                    </topics>
-                                    <note type="str">1 line note</note>
-                                </item>
-                                <item type="dict">
-                                    <title type="str">label</title>
-                                </item>
-                                <item type="dict">
-                                    <title type="str">attachment</title>
-                                    <topics type="list">
-                                        <item type="dict">
-                                            <title type="str">[Attachment]test.txt</title>
-                                        </item>
-                                    </topics>
-                                </item>
-                                <item type="dict">
-                                    <title type="str">pic</title>
-                                    <topics type="list">
-                                        <item type="dict">
-                                            <title type="str">[Image]</title>
-                                        </item>
-                                    </topics>
-                                </item>
-                                <item type="dict">
-                                    <title type="str">links</title>
-                                    <topics type="list">
-                                        <item type="dict">
-                                            <title type="str">to url</title>
-                                            <link type="str">http://test.com</link>
-                                        </item>
-                                        <item type="dict">
-                                            <title type="str">to file</title>
-                                            <link type="str">file:////abc/ef</link>
-                                        </item>
-                                        <item type="dict">
-                                            <title type="str">to topic</title>
-                                            <link type="str">[To another xmind topic!]</link>
-                                        </item>
-                                    </topics>
-                                </item>
-                            </topics>
-                        </item>
-                        <item type="dict">
-                            <title type="str">测试</title>
-                            <topics type="list">
-                                <item type="dict">
-                                    <title type="str">note</title>
-                                    <note type="str">测试中文</note>
-                                </item>
-                                <item type="dict">
-                                    <title type="str">comments</title>
-                                    <comment type="list">
-                                        <item type="dict">
-                                            <content type="str">中文测试</content>
-                                            <author type="str">toby.qin</author>
-                                        </item>
-                                    </comment>
-                                </item>
-                            </topics>
-                        </item>
-                        <item type="dict">
-                            <title type="str">&lt;/&gt;{}[]*+-</title>
-                        </item>
-                    </topics>
-                </item>
-                <item type="dict">
-                    <title type="str">c</title>
-                    <topics type="list">
-                        <item type="dict">
-                            <title type="str">a</title>
-                        </item>
-                        <item type="dict">
-                            <title type="str">a</title>
-                        </item>
-                        <item type="dict">
-                            <title type="str">a</title>
-                            <link type="str">[To another xmind topic!]</link>
-                        </item>
-                    </topics>
-                </item>
-            </topics>
-        </topic>
-    </item>
-    <item type="dict">
-        <title type="str">Sheet 2</title>
-        <structure type="str">org.xmind.ui.map.unbalanced</structure>
-        <topic type="dict">
-            <title type="str">test2</title>
-            <topics type="list">
-                <item type="dict">
-                    <title type="str">a</title>
-                    <topics type="list">
-                        <item type="dict">
-                            <title type="str">1</title>
-                        </item>
-                        <item type="dict">
-                            <title type="str">2</title>
-                        </item>
-                        <item type="dict">
-                            <title type="str">3</title>
-                        </item>
-                    </topics>
-                </item>
-                <item type="dict">
-                    <title type="str">b</title>
-                </item>
-            </topics>
-        </topic>
-    </item>
+	<item type="dict">
+		<structure type="str">org.xmind.ui.map.unbalanced</structure>
+		<topic type="dict">
+			<topics type="list">
+				<item type="dict">
+					<link type="str">http://test.com</link>
+					<topics type="list">
+						<item type="dict">
+							<topics type="list">
+								<item type="dict">
+									<topics type="list">
+										<item type="dict">
+											<title type="str">g</title>
+										</item>
+									</topics>
+									<title type="str">f</title>
+								</item>
+							</topics>
+							<title type="str">e</title>
+						</item>
+						<item type="dict">
+							<topics type="list">
+								<item type="dict">
+									<title type="str">[Blank]</title>
+								</item>
+							</topics>
+							<title type="str">d</title>
+						</item>
+						<item type="dict">
+							<topics type="list">
+								<item type="dict">
+									<note type="str">this is a note</note>
+									<title type="str">[Blank]</title>
+								</item>
+							</topics>
+							<title type="str">e</title>
+							<makers type="list">
+								<item type="str">symbol-plus</item>
+							</makers>
+						</item>
+						<item type="dict">
+							<topics type="list">
+								<item type="dict">
+									<topics type="list">
+										<item type="dict">
+											<comment type="list">
+												<item type="dict">
+													<content type="str">this a comments</content>
+													<author type="str">toby.qin</author>
+												</item>
+											</comment>
+											<title type="str">[Blank]</title>
+										</item>
+									</topics>
+									<title type="str">h</title>
+								</item>
+							</topics>
+							<title type="str">[Blank]</title>
+						</item>
+					</topics>
+					<title type="str">a</title>
+				</item>
+				<item type="dict">
+					<topics type="list">
+						<item type="dict">
+							<topics type="list">
+								<item type="dict">
+									<comment type="list">
+										<item type="dict">
+											<content type="str">comment1</content>
+											<author type="str">toby.qin</author>
+										</item>
+										<item type="dict">
+											<content type="str">comment2</content>
+											<author type="str">toby.qin</author>
+										</item>
+										<item type="dict">
+											<content type="str">comment3
+												new line
+											</content>
+											<author type="str">toby.qin</author>
+										</item>
+									</comment>
+									<title type="str">comment</title>
+								</item>
+								<item type="dict">
+									<note type="str">1 line note</note>
+									<topics type="list">
+										<item type="dict">
+											<note type="str">line1
+												line2
+											</note>
+											<title type="str">note2</title>
+										</item>
+										<item type="dict">
+											<note type="str">note with style
+												line with strike
+											</note>
+											<title type="str">note3</title>
+										</item>
+									</topics>
+									<title type="str">note</title>
+								</item>
+								<item type="dict">
+									<labels type="list">
+										<item type="str">this is a label</item>
+									</labels>
+									<title type="str">label</title>
+								</item>
+								<item type="dict">
+									<topics type="list">
+										<item type="dict">
+											<title type="str">[Attachment]test.txt</title>
+										</item>
+									</topics>
+									<title type="str">attachment</title>
+								</item>
+								<item type="dict">
+									<topics type="list">
+										<item type="dict">
+											<title type="str">[Image]</title>
+										</item>
+									</topics>
+									<title type="str">pic</title>
+								</item>
+								<item type="dict">
+									<topics type="list">
+										<item type="dict">
+											<link type="str">http://test.com</link>
+											<title type="str">to url</title>
+										</item>
+										<item type="dict">
+											<link type="str">file:////abc/ef</link>
+											<title type="str">to file</title>
+										</item>
+										<item type="dict">
+											<link type="str">[To another xmind topic!]</link>
+											<title type="str">to topic</title>
+										</item>
+									</topics>
+									<title type="str">links</title>
+								</item>
+							</topics>
+							<title type="str">types</title>
+						</item>
+						<item type="dict">
+							<topics type="list">
+								<item type="dict">
+									<note type="str">测试中文</note>
+									<title type="str">note</title>
+								</item>
+								<item type="dict">
+									<comment type="list">
+										<item type="dict">
+											<content type="str">中文测试</content>
+											<author type="str">toby.qin</author>
+										</item>
+									</comment>
+									<title type="str">comments</title>
+								</item>
+							</topics>
+							<title type="str">测试</title>
+						</item>
+						<item type="dict">
+							<title type="str">&lt;/&gt;{}[]*+-</title>
+						</item>
+					</topics>
+					<title type="str">b</title>
+					<makers type="list">
+						<item type="str">task-done</item>
+						<item type="str">flag-red</item>
+						<item type="str">people-red</item>
+						<item type="str">arrow-up</item>
+					</makers>
+				</item>
+				<item type="dict">
+					<topics type="list">
+						<item type="dict">
+							<title type="str">a</title>
+						</item>
+						<item type="dict">
+							<title type="str">a</title>
+						</item>
+						<item type="dict">
+							<link type="str">[To another xmind topic!]</link>
+							<title type="str">a</title>
+						</item>
+					</topics>
+					<title type="str">c</title>
+				</item>
+			</topics>
+			<title type="str">test</title>
+			<makers type="list">
+				<item type="str">star-orange</item>
+			</makers>
+		</topic>
+		<title type="str">Sheet 1</title>
+	</item>
+	<item type="dict">
+		<structure type="str">org.xmind.ui.map.unbalanced</structure>
+		<topic type="dict">
+			<topics type="list">
+				<item type="dict">
+					<topics type="list">
+						<item type="dict">
+							<title type="str">1</title>
+						</item>
+						<item type="dict">
+							<title type="str">2</title>
+						</item>
+						<item type="dict">
+							<title type="str">3</title>
+						</item>
+					</topics>
+					<title type="str">a</title>
+				</item>
+				<item type="dict">
+					<title type="str">b</title>
+				</item>
+			</topics>
+			<title type="str">test2</title>
+		</topic>
+		<title type="str">Sheet 2</title>
+	</item>
 </root>

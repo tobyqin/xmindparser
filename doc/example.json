@@ -2,37 +2,35 @@
   {
     "title": "Sheet 1",
     "topic": {
-      "title": "test",
       "makers": [
         "star-orange"
       ],
       "topics": [
         {
-          "title": "a",
+          "link": "http://test.com",
           "topics": [
             {
-              "title": "e",
               "topics": [
                 {
-                  "title": "f",
                   "topics": [
                     {
                       "title": "g"
                     }
-                  ]
+                  ],
+                  "title": "f"
                 }
-              ]
+              ],
+              "title": "e"
             },
             {
-              "title": "d",
               "topics": [
                 {
                   "title": "[Blank]"
                 }
-              ]
+              ],
+              "title": "d"
             },
             {
-              "title": "e",
               "makers": [
                 "symbol-plus"
               ],
@@ -41,13 +39,12 @@
                   "title": "[Blank]",
                   "note": "this is a note"
                 }
-              ]
+              ],
+              "title": "e"
             },
             {
-              "title": "[Blank]",
               "topics": [
                 {
-                  "title": "h",
                   "topics": [
                     {
                       "title": "[Blank]",
@@ -58,15 +55,16 @@
                         }
                       ]
                     }
-                  ]
+                  ],
+                  "title": "h"
                 }
-              ]
+              ],
+              "title": "[Blank]"
             }
           ],
-          "link": "http://test.com"
+          "title": "a"
         },
         {
-          "title": "b",
           "makers": [
             "task-done",
             "flag-red",
@@ -75,7 +73,6 @@
           ],
           "topics": [
             {
-              "title": "types",
               "topics": [
                 {
                   "title": "comment",
@@ -95,8 +92,6 @@
                   ]
                 },
                 {
-                  "title": "note",
-                  "note": "1 line note",
                   "topics": [
                     {
                       "title": "note2",
@@ -106,48 +101,53 @@
                       "title": "note3",
                       "note": "note with style\r\nline with strike"
                     }
-                  ]
+                  ],
+                  "title": "note",
+                  "note": "1 line note"
                 },
                 {
+                  "labels": [
+                    "this is a  label"
+                  ],
                   "title": "label"
                 },
                 {
-                  "title": "attachment",
                   "topics": [
                     {
                       "title": "[Attachment]test.txt"
                     }
-                  ]
+                  ],
+                  "title": "attachment"
                 },
                 {
-                  "title": "pic",
                   "topics": [
                     {
                       "title": "[Image]"
                     }
-                  ]
+                  ],
+                  "title": "pic"
                 },
                 {
-                  "title": "links",
                   "topics": [
                     {
-                      "title": "to url",
-                      "link": "http://test.com"
+                      "link": "http://test.com",
+                      "title": "to url"
                     },
                     {
-                      "title": "to file",
-                      "link": "file:////abc/ef"
+                      "link": "file:////abc/ef",
+                      "title": "to file"
                     },
                     {
-                      "title": "to topic",
-                      "link": "[To another xmind topic!]"
+                      "link": "[To another xmind topic!]",
+                      "title": "to topic"
                     }
-                  ]
+                  ],
+                  "title": "links"
                 }
-              ]
+              ],
+              "title": "types"
             },
             {
-              "title": "\u6d4b\u8bd5",
               "topics": [
                 {
                   "title": "note",
@@ -162,15 +162,16 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "title": "\u6d4b\u8bd5"
             },
             {
               "title": "</>{}[]*+-"
             }
-          ]
+          ],
+          "title": "b"
         },
         {
-          "title": "c",
           "topics": [
             {
               "title": "a"
@@ -179,22 +180,22 @@
               "title": "a"
             },
             {
-              "title": "a",
-              "link": "[To another xmind topic!]"
+              "link": "[To another xmind topic!]",
+              "title": "a"
             }
-          ]
+          ],
+          "title": "c"
         }
-      ]
+      ],
+      "title": "test"
     },
     "structure": "org.xmind.ui.map.unbalanced"
   },
   {
     "title": "Sheet 2",
     "topic": {
-      "title": "test2",
       "topics": [
         {
-          "title": "a",
           "topics": [
             {
               "title": "1"
@@ -205,12 +206,14 @@
             {
               "title": "3"
             }
-          ]
+          ],
+          "title": "a"
         },
         {
           "title": "b"
         }
-      ]
+      ],
+      "title": "test2"
     },
     "structure": "org.xmind.ui.map.unbalanced"
   }

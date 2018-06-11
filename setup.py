@@ -36,10 +36,10 @@ def main():
     setup(
         name="xmindparser",
         description="Convert xmind to programmable data types.",
-        keywords="xmind converter json xml html",
+        keywords="xmind parser converter json xml",
         long_description=long_description,
         classifiers=classifiers,
-        version="1.0.2",
+        version="1.0.4",
         author="Toby Qin",
         author_email="toby.qin@live.com",
         url="https://github.com/tobyqin/xmindparser",
