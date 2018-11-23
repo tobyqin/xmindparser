@@ -4,11 +4,12 @@ from os.path import join, dirname, exists
 from pathlib import Path
 
 from xmindparser import *
-from xmindparser.xreader import logger, set_logger_level
+from xmindparser.xreader import logger, set_logger_level, cache
 
 xmind_file = join(dirname(__file__), 'test.xmind')
 expected_json = join(dirname(dirname(__file__)), 'doc/example.json')
-expected_json_with_id = join(dirname(dirname(__file__)), 'doc/example_with_id.json')
+expected_json_with_id = join(
+    dirname(dirname(__file__)), 'doc/example_with_id.json')
 set_logger_level(logging.DEBUG)
 
 
@@ -24,6 +25,7 @@ def test_xmind_to_dict_debug():
 
 
 def test_xmind_to_dict_default():
+    config['showTopicId'] = False
     d = xmind_to_dict(xmind_file)
     logger.info(dumps(d))
     assert load_json(expected_json) == d
@@ -39,8 +41,8 @@ def convert_to_file(method, name):
 
 
 def test_xmind_to_json():
-    convert_to_file(xmind_to_json, 'test.json')
+    convert_to_file(xmind_to_json, 'tests/test.json')
 
 
 def test_xmind_to_xml():
-    convert_to_file(xmind_to_xml, 'test.xml')
+    convert_to_file(xmind_to_xml, 'tests/test.xml')
