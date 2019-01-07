@@ -1,29 +1,12 @@
-import logging
 import re
-import sys
 from xml.etree import ElementTree as  ET
 from xml.etree.ElementTree import Element
 from zipfile import ZipFile
 
-from . import config
+from . import config, logger, cache
 
-cache = {}
 content_xml = "content.xml"
 comments_xml = "comments.xml"
-
-_log_name = config['logName'] or __file__
-_log_level = config['logLevel'] or logging.WARNING
-_log_fmt = config['logFormat'] or '%(asctime)s %(levelname)-8s: %(message)s'
-
-logger = logging.getLogger(_log_name)
-logger.setLevel(_log_level)
-console_handler = logging.StreamHandler(sys.stdout)
-console_handler.setFormatter(logging.Formatter(config['logFormat']))
-logger.addHandler(console_handler)
-
-
-def set_logger_level(new_level):
-    logger.setLevel(new_level)
 
 
 def open_xmind(file_path):

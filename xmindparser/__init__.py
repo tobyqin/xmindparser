@@ -3,13 +3,36 @@ Parse xmind to programmable data types.
 """
 
 import json
+import logging
 import os
+import sys
+from zipfile import ZipFile
 
 config = {'logName': __name__,
           'logLevel': None,
           'logFormat': '%(asctime)s %(levelname)-8s: %(message)s',
           'showTopicId': False,
           'hideEmptyValue': True}
+
+cache = {}
+_log_name = config['logName'] or __file__
+_log_level = config['logLevel'] or logging.WARNING
+_log_fmt = config['logFormat'] or '%(asctime)s %(levelname)-8s: %(message)s'
+
+logger = logging.getLogger(_log_name)
+logger.setLevel(_log_level)
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setFormatter(logging.Formatter(config['logFormat']))
+logger.addHandler(console_handler)
+
+
+def set_logger_level(new_level):
+    logger.setLevel(new_level)
+
+
+def is_xmind_zen(file_path):
+    with ZipFile(file_path) as xmind:
+        return 'content.json' in xmind.namelist()
 
 
 def _get_out_file_name(xmind_file, suffix):
