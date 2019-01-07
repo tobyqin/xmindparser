@@ -1,10 +1,9 @@
-import logging
 from json import dumps, loads
 from os.path import join, dirname, exists
 from pathlib import Path
 
 from xmindparser import *
-from xmindparser.xreader import logger, set_logger_level, cache
+from xmindparser.xreader import logger
 
 xmind_file = join(dirname(__file__), 'test.xmind')
 expected_json = join(dirname(dirname(__file__)), 'doc/example.json')
