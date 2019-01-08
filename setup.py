@@ -22,7 +22,7 @@ classifiers = ["License :: OSI Approved :: MIT License",
                "Topic :: Utilities",
                "Operating System :: Microsoft :: Windows",
                "Operating System :: MacOS :: MacOS X"] + [
-                  ("Programming Language :: Python :: %s" % x) for x in "3.4 3.5 3.6".split()]
+                  ("Programming Language :: Python :: %s" % x) for x in "3.4 3.5 3.6 3.7 3.8".split()]
 
 
 def command_line():
@@ -35,11 +35,11 @@ def command_line():
 def main():
     setup(
         name="xmindparser",
-        description="Convert xmind to programmable data types.",
+        description="Convert xmind to programmable data types, support xmind pro and xmind zen file types.",
         keywords="xmind parser converter json xml",
         long_description=long_description,
         classifiers=classifiers,
-        version="1.0.4",
+        version="1.0.5",
         author="Toby Qin",
         author_email="toby.qin@live.com",
         url="https://github.com/tobyqin/xmindparser",

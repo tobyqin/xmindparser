@@ -1,0 +1,142 @@
+[
+  {
+    "topic": {
+      "topics": [
+        {
+          "makers": [
+            "priority-1"
+          ],
+          "topics": [
+            {
+              "note": "note info\nnew line of note",
+              "title": "note topic",
+              "id": "62406618-32b1-486d-82b4-57f319fa633a"
+            },
+            {
+              "topics": [
+                {
+                  "note": "hello world",
+                  "title": "formatted note",
+                  "id": "f5a46c76-3dc0-48a4-b93f-59a8ecfc3340"
+                }
+              ],
+              "title": "label topic",
+              "id": "68405d18-e77d-4fb4-9db5-8bb003baa758",
+              "labels": [
+                "great"
+              ]
+            },
+            {
+              "link": "http://www.link.com",
+              "title": "link topic",
+              "id": "b588cc21-4a33-4108-8a3d-4a066714581a"
+            },
+            {
+              "callout": [
+                "Callout"
+              ],
+              "title": "callout topic",
+              "id": "1a14cbd3-9ead-4867-af1e-9781d2fe8927"
+            },
+            {
+              "makers": [
+                "priority-2",
+                "smiley-smile",
+                "task-oct",
+                "flag-orange"
+              ],
+              "title": "makers topic",
+              "id": "44d2dea9-9d68-4237-b5c0-1d02632381d1"
+            },
+            {
+              "title": "sticker topic",
+              "id": "6657af1e-4770-4ff4-9a09-66f546e4c720"
+            },
+            {
+              "title": "image topic",
+              "id": "a5ffd21b-2fda-4dd4-8a64-6490a9aaa46d"
+            },
+            {
+              "topics": [
+                {
+                  "link": "xap:resources/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.txt",
+                  "title": "test.txt",
+                  "id": "2ba4c9fa-5bb4-4715-985f-d8316e1c6b55"
+                }
+              ],
+              "title": "attachment topic",
+              "id": "2cac3535-1d74-44d9-9621-04708a134ac5"
+            }
+          ],
+          "title": "topic 1",
+          "id": "b58888b5ceebbf0e68dada0656"
+        },
+        {
+          "makers": [
+            "priority-2"
+          ],
+          "topics": [
+            {
+              "title": "123",
+              "id": "68bb7a52-1e41-4a29-b9b8-204b3d17ee5f"
+            },
+            {
+              "topics": [
+                {
+                  "title": "topic after empty",
+                  "id": "357e5088-f207-41c9-b920-01f4d955dcaa"
+                }
+              ],
+              "title": "",
+              "id": "810acef9-36a1-4580-bec0-7cce95661838"
+            },
+            {
+              "title": "\u4e2d\u6587",
+              "id": "fae3efe0-dbcc-46c9-975c-d60ca8fc6455"
+            },
+            {
+              "topics": [
+                {
+                  "title": "topic with special chars",
+                  "id": "f8942451-183b-4dc6-9816-bc4b9baa7686"
+                }
+              ],
+              "title": "<>{}*&^^&*^%@!",
+              "id": "6b9e69af-6e90-456b-b2d7-1fe564ec97ed"
+            },
+            {
+              "title": "formatted topic",
+              "id": "f0d31da3-59aa-4c68-b909-ab44a6dc76d7"
+            }
+          ],
+          "title": "topic 2",
+          "id": "193b56735e689ae86a01d91513"
+        }
+      ],
+      "title": "Central Topic",
+      "id": "b9aa22deba98b3b20c7ac8aca2"
+    },
+    "structure": "org.xmind.ui.map.unbalanced",
+    "title": "Map 1",
+    "id": "1fb9723a328b06763d296b8fee"
+  },
+  {
+    "topic": {
+      "topics": [
+        {
+          "title": "Main Topic 1",
+          "id": "da88f9a5ad9a201fb6618a0d65"
+        },
+        {
+          "title": "Main Topic 2",
+          "id": "33284f5d0e89964530c77a7299"
+        }
+      ],
+      "title": "another sheet",
+      "id": "495938ff229b6b4f6ef178ea3f"
+    },
+    "structure": "org.xmind.ui.map.unbalanced",
+    "title": "Map 2",
+    "id": "f3e8391738b81b4beac919ce7c"
+  }
+]
