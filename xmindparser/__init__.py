@@ -31,8 +31,20 @@ def set_logger_level(new_level):
 
 
 def is_xmind_zen(file_path):
+    """Determine if this is a xmind zen file type."""
     with ZipFile(file_path) as xmind:
         return 'content.json' in xmind.namelist()
+
+
+def get_xmind_zen_builtin_json(file_path):
+    """Read internal content.json from xmind zen file."""
+    name = "content.json"
+    with ZipFile(file_path) as xmind:
+        if name in xmind.namelist():
+            content = xmind.open(name).read().decode('utf-8')
+            return json.loads(content)
+
+        raise AssertionError("Not a xmind zen file type!")
 
 
 def _get_out_file_name(xmind_file, suffix):
@@ -44,7 +56,10 @@ def _get_out_file_name(xmind_file, suffix):
 
 def xmind_to_dict(file_path):
     """Open and convert xmind to dict type."""
-    from .xreader import open_xmind, get_sheets, sheet_to_dict
+    if is_xmind_zen(file_path):
+        from .zenreader import open_xmind, get_sheets, sheet_to_dict
+    else:
+        from .xreader import open_xmind, get_sheets, sheet_to_dict
 
     open_xmind(file_path)
     data = []

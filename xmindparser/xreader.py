@@ -76,7 +76,7 @@ def node_to_dict(node):
         d['id'] = id_of(node)
 
     if config['hideEmptyValue']:
-        d = {k: v for k, v in d.items() if v}
+        d = {k: v for k, v in d.items() if v or k == 'title'}
 
     return d
 
@@ -170,19 +170,14 @@ def debug_node(node, comments):
     return s
 
 
-def maker_of(topic_node, maker_prefix=None):
+def maker_of(topic_node):
     maker_node = topic_node.find('marker-refs')
     if maker_node is not None:
         makers = []
         for maker in maker_node:
             makers.append(maker.attrib['marker-id'])
 
-        if maker_prefix:
-            for m in makers:
-                if m.startswith(maker_prefix):
-                    return m
-        else:
-            return makers
+        return makers
 
 
 def children_topics_of(topic_node):

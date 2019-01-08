@@ -1,0 +1,117 @@
+[
+  {
+    "structure": "org.xmind.ui.map.unbalanced",
+    "topic": {
+      "topics": [
+        {
+          "makers": [
+            "priority-1"
+          ],
+          "topics": [
+            {
+              "note": "note info\nnew line of note",
+              "title": "note topic"
+            },
+            {
+              "topics": [
+                {
+                  "note": "hello world",
+                  "title": "formatted note"
+                }
+              ],
+              "labels": [
+                "great"
+              ],
+              "title": "label topic"
+            },
+            {
+              "link": "http://www.link.com",
+              "title": "link topic"
+            },
+            {
+              "title": "callout topic",
+              "callout": [
+                "Callout"
+              ]
+            },
+            {
+              "makers": [
+                "priority-2",
+                "smiley-smile",
+                "task-oct",
+                "flag-orange"
+              ],
+              "title": "makers topic"
+            },
+            {
+              "title": "sticker topic"
+            },
+            {
+              "title": "image topic"
+            },
+            {
+              "topics": [
+                {
+                  "link": "xap:resources/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.txt",
+                  "title": "test.txt"
+                }
+              ],
+              "title": "attachment topic"
+            }
+          ],
+          "title": "topic 1"
+        },
+        {
+          "makers": [
+            "priority-2"
+          ],
+          "topics": [
+            {
+              "title": "123"
+            },
+            {
+              "topics": [
+                {
+                  "title": "topic after empty"
+                }
+              ],
+              "title": ""
+            },
+            {
+              "title": "\u4e2d\u6587"
+            },
+            {
+              "topics": [
+                {
+                  "title": "topic with special chars"
+                }
+              ],
+              "title": "<>{}*&^^&*^%@!"
+            },
+            {
+              "title": "formatted topic"
+            }
+          ],
+          "title": "topic 2"
+        }
+      ],
+      "title": "Central Topic"
+    },
+    "title": "Map 1"
+  },
+  {
+    "structure": "org.xmind.ui.map.unbalanced",
+    "topic": {
+      "topics": [
+        {
+          "title": "Main Topic 1"
+        },
+        {
+          "title": "Main Topic 2"
+        }
+      ],
+      "title": "another sheet"
+    },
+    "title": "Map 2"
+  }
+]

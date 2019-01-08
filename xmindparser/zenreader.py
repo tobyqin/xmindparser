@@ -1,3 +1,4 @@
+import json
 from zipfile import ZipFile
 
 from . import config, cache
@@ -17,13 +18,13 @@ def open_xmind(file_path):
 
 def get_sheets():
     """get all sheet as generator and yield."""
-    for sheet in cache[content_json]:
+    for sheet in json.loads(cache[content_json]):
         yield sheet
 
 
 def sheet_to_dict(sheet):
     """convert a sheet to dict type."""
-    topic = sheet['topic']
+    topic = sheet['rootTopic']
     result = {'title': sheet['title'], 'topic': node_to_dict(topic), 'structure': get_sheet_structure(sheet)}
 
     if config['showTopicId']:
@@ -48,7 +49,8 @@ def node_to_dict(node):
          'note': note_of(node),
          'makers': maker_of(node),
          'labels': labels_of(node),
-         'link': link_of(node)}
+         'link': link_of(node),
+         'callout': callout_of(node)}
 
     if d['link']:
 
@@ -68,7 +70,7 @@ def node_to_dict(node):
         d['id'] = node['id']
 
     if config['hideEmptyValue']:
-        d = {k: v for k, v in d.items() if v}
+        d = {k: v for k, v in d.items() if v or k == 'title'}
 
     return d
 
@@ -111,19 +113,22 @@ def note_of(node):
     if note_node:
         note = note_node.get('plain', None)
         if note:
-            return note['plain'].get('content', '').strip()
+            return note.get('content', '').strip()
 
 
-def maker_of(topic_node, maker_prefix=None):
-    maker_node = topic_node.find('marker-refs')
+def maker_of(topic_node):
+    maker_node = topic_node.get('markers', None)
     if maker_node is not None:
         makers = []
         for maker in maker_node:
-            makers.append(maker.attrib['marker-id'])
+            makers.append(maker.get('markerId', None))
 
-        if maker_prefix:
-            for m in makers:
-                if m.startswith(maker_prefix):
-                    return m
-        else:
-            return makers
+        return makers
+
+
+def callout_of(topic_node):
+    callout = topic_node.get('children', None)
+    if callout:
+        callout = callout.get('callout', None)
+        if callout:
+            return [x['title'] for x in callout]

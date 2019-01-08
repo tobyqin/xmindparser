@@ -1,6 +1,10 @@
 Change Log
 ----------
 
+1.0.5
+
+- Support xmind zen file type.
+
 1.0.4
 
 - Support parse label feature.
