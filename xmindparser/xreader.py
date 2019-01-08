@@ -142,7 +142,7 @@ def title_of(node):
     title = node.find('title')
 
     if title is not None:
-        return title.text or '[Blank]'
+        return title.text
 
 
 def labels_of(node):

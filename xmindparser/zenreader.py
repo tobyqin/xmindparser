@@ -50,6 +50,7 @@ def node_to_dict(node):
          'makers': maker_of(node),
          'labels': labels_of(node),
          'link': link_of(node),
+         'image': image_of(node),
          'callout': callout_of(node)}
 
     if d['link']:
@@ -82,25 +83,12 @@ def children_topics_of(topic_node):
         return children.get('attached', None)
 
 
-def image_of(node):
-    img = node.find('img')
-
-    if img is not None:
-        return '[Image]'
-
-
 def link_of(node):
     return node.get('href', None)
 
 
-def title_of(node):
-    if image_of(node):
-        return image_of(node)
-
-    title = node.find('title')
-
-    if title is not None:
-        return title.text or '[Blank]'
+def image_of(node):
+    return node.get('image', None)
 
 
 def labels_of(node):
