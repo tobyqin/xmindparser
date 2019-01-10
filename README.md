@@ -2,7 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/xmindparser.svg)](https://pypi.org/project/xmindparser/)
 
-Parse xmind file to programmable data type (e.g. json, xml). Python 3.x required. Now we support XmindZen file type as well.
+Parse xmind file to programmable data type (e.g. json, xml). Python 3.x required. Now it supports XmindZen file type as well.
 
 See also: [xmind2testlink](https://github.com/tobyqin/xmind2testlink) / [中文文档](https://betacat.online/posts/2018-07-01/parse-xmind-to-programmable-data-type/)
 
@@ -32,9 +32,11 @@ d = xmind_to_dict('/path/to/your/xmind')
 print(d)
 ```
 
-## Configurations
+See example output: [json](doc/example.json)
 
-If you use `xmindparser` via Python, it provides a `config` object, see this example:
+## Configuration
+
+If you use `xmindparser` via Python, it provides a `config` object, check this example:
 
 ```python
 import logging
@@ -66,9 +68,9 @@ Please note, following xmind features will not be supported or partially support
 - Will not parse image object, only name it as `[Image]`
 - Rich text format in notes will be parsed as plain text.
 
-# XmindZen Updates
+## XmindZen Supporting
 
-XmindParser will auto detect xmind file created by XmindZen, so you just pass in the file, use it as usual.
+`xmindparser` will auto detect xmind file created by XmindZen or XmindPro, so you just pass in the file as usual.
 
 ```python
 from xmindparser import xmind_to_dict
@@ -79,16 +81,16 @@ print(d)
 
 Please note, there are a few differences between xmind pro and xmind zen.
 
-- Remove comments, so I will not parse comments.
-- Add sticker, but I will not parse it.
-- Add callout, this is supported.
+- Comments feature removed, so I will not parse it.
+- Add feature - sticker, I parse it as `image` dict type.
+- Add feature - callout, I parse it as `list` type.
 
-Since XmindZen has upgraded the file manifest as json, you can read the built-in json by code like this:
+Since XmindZen has upgraded the internal content file as json, you can read it by code like this:
 
 ```python
 import json
 
-def open_xmind(file_path):
+def get_xmind_zen_json(file_path):
     name = "content.json"
     with ZipFile(file_path) as xmind:
         if name in xmind.namelist():
@@ -106,11 +108,11 @@ content_json = get_xmind_zen_builtin_json(xmind_zen_file)
 ## Examples
 
 ![Xmind Example](doc/xmind.png)
-[(Download xmind pro file)](tests/xmind_pro.xmind)
-[(Download xmind zen file)](tests/xmind_zen.xmind)
 
-- xmind to [json example](doc/example.json)
-- xmind to [xml example](doc/example.xml)
+- [Download xmind pro example](tests/xmind_pro.xmind)
+- [Download xmind zen example](tests/xmind_zen.xmind)
+- Output: [json example](doc/example.json)
+- Output: [xml example](doc/example.xml)
 
 ## License
 
