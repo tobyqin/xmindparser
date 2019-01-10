@@ -68,7 +68,7 @@ Please note, following xmind features will not be supported or partially support
 - Will not parse image object, only name it as `[Image]`
 - Rich text format in notes will be parsed as plain text.
 
-# XmindZen Supporting
+## XmindZen Supporting
 
 `xmindparser` will auto detect xmind file created by XmindZen or XmindPro, so you just pass in the file as usual.
 
