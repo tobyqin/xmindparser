@@ -54,7 +54,7 @@ print(d)
 
 ```
 
-## Limitations (for XmindPro, legacy version)
+## Limitations (for Xmind legacy version)
 
 Please note, following xmind features will not be supported or partially supported.
 
@@ -70,7 +70,7 @@ Please note, following xmind features will not be supported or partially support
 
 ## XmindZen Supporting
 
-`xmindparser` will auto detect xmind file created by XmindZen or XmindPro, so you just pass in the file as usual.
+`xmindparser` will auto detect xmind file created by XmindZen or XmindPro, you can pass in ZEN file as usual.
 
 ```python
 from xmindparser import xmind_to_dict
@@ -79,11 +79,11 @@ d = xmind_to_dict('/path/to/your/xmind_zen_file')
 print(d)
 ```
 
-Please note, there are a few differences between xmind pro and xmind zen.
+Please note, there are a few differences between xmind legacy and xmind zen.
 
-- Comments feature removed, so I will not parse it.
+- Comments feature removed, so I will not parse it in ZEN.
 - Add feature - sticker, I parse it as `image` dict type.
-- Add feature - callout, I parse it as `list` type.
+- Add feature - callout, I parse it as `list` type. (not sure existed in lagacy?)
 
 Since XmindZen has upgraded the internal content file as json, you can read it by code like this:
 
