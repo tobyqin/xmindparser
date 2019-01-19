@@ -1,5 +1,8 @@
 Change Log
 ----------
+1.0.7
+
+- Handle empty title name for xmind zen in some cases.
 
 1.0.6
 

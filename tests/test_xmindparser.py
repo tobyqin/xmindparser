@@ -70,3 +70,8 @@ def test_xmind_to_xml():
 def test_read_builtin_xmind_zen():
     out = get_xmind_zen_builtin_json(xmind_zen_file)
     assert out
+
+
+def test_real_file():
+    f = '/Users/tobyqin/Desktop/bad.xmind'
+    xmind_to_dict(f)
