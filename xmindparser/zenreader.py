@@ -45,7 +45,7 @@ def node_to_dict(node):
     """parse Element to dict data type."""
     child = children_topics_of(node)
 
-    d = {'title': node['title'],
+    d = {'title': node.get('title', ''),
          'note': note_of(node),
          'makers': maker_of(node),
          'labels': labels_of(node),
