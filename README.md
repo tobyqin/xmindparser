@@ -4,7 +4,7 @@
 
 Parse xmind file to programmable data type (e.g. json, xml). Python 3.x required. Now it supports XmindZen file type as well.
 
-See also: [xmind2testlink](https://github.com/tobyqin/xmind2testlink) / [中文文档](https://betacat.online/posts/2018-07-01/parse-xmind-to-programmable-data-type/)
+See also: [xmind2testlink](https://github.com/tobyqin/xmind2testlink) / [中文文档](https://tobyqin.github.io/posts/2018-07-01/parse-xmind-to-programmable-data-type/)
 
 ## Installation
 
