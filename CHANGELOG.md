@@ -1,5 +1,9 @@
 Change Log
 ----------
+1.0.9
+
+- Support and test with Python 3.9
+
 1.0.8
 
 - Handle empty title name for xmind zen in some cases.

@@ -20,11 +20,11 @@ def load_json(f):
     return loads(Path(f).read_text())
 
 
-def test_xmind_to_dict_debug_pro():
+def test_xmind_to_dict_debug(file=xmind_pro_file, expected=expected_json_pro_with_id):
     config['showTopicId'] = True
-    d = xmind_to_dict(xmind_pro_file)
+    d = xmind_to_dict(file)
     logger.info(dumps(d))
-    assert load_json(expected_json_pro_with_id) == d
+    assert load_json(expected) == d
 
 
 def test_xmind_to_dict_default_pro():
@@ -35,10 +35,7 @@ def test_xmind_to_dict_default_pro():
 
 
 def test_xmind_to_dict_debug_zen():
-    config['showTopicId'] = True
-    d = xmind_to_dict(xmind_zen_file)
-    logger.info(dumps(d))
-    assert load_json(expected_json_zen_with_id) == d
+    test_xmind_to_dict_debug(xmind_zen_file, expected_json_zen_with_id)
 
 
 def test_xmind_to_dict_default_zen():
@@ -74,4 +71,7 @@ def test_read_builtin_xmind_zen():
 
 def test_real_file():
     f = '/Users/tobyqin/Desktop/bad.xmind'
-    xmind_to_dict(f)
+    if exists(f):
+        xmind_to_dict(f)
+    else:
+        print('WARN: cannot find test file.')
