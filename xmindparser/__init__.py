@@ -77,6 +77,9 @@ def xmind_to_file(file_path, file_type):
     elif file_type == 'xml':
         return xmind_to_xml(file_path)
 
+    elif file_type == 'markdown' or file_type == 'md':
+        return xmind_to_markdown(file_path)
+
     else:
         raise ValueError('Not supported file type: {}'.format(file_type))
 
@@ -105,3 +108,85 @@ def xmind_to_xml(file_path):
     except ImportError:
         raise ImportError('Parse xmind to xml require "dicttoxml", try install via pip:\n' +
                           '> pip install dicttoxml')
+
+
+def xmind_to_markdown(file_path):
+    """Convert xmind file to markdown format."""
+    data = xmind_to_dict(file_path)
+    target = _get_out_file_name(file_path, 'md')
+    
+    markdown_lines = []
+    
+    for sheet in data:
+        markdown_lines.extend(_sheet_to_markdown(sheet))
+        markdown_lines.append('')  # Add empty line between sheets
+    
+    with open(target, 'w', encoding='utf8') as f:
+        f.write('\n'.join(markdown_lines))
+    
+    return target
+
+
+def _sheet_to_markdown(sheet):
+    """Convert a sheet to markdown lines."""
+    lines = []
+    
+    # Sheet title as h1
+    title = sheet.get('title', 'Untitled')
+    lines.append('# {}'.format(title))
+    lines.append('')
+    
+    # Process root topic
+    topic = sheet.get('topic', {})
+    if topic:
+        lines.extend(_topic_to_markdown(topic, level=2))
+    
+    return lines
+
+
+def _topic_to_markdown(topic, level=2):
+    """Convert a topic and its children to markdown lines."""
+    lines = []
+    
+    # Topic title as heading
+    title = topic.get('title', '')
+    if title:
+        heading = '#' * level
+        lines.append('{} {}'.format(heading, title))
+    
+    # Add note if exists
+    note = topic.get('note', '')
+    if note:
+        lines.append('')
+        lines.append('> {}'.format(note.replace('\n', '\n> ')))
+    
+    # Add labels if exists
+    labels = topic.get('labels', [])
+    if labels:
+        lines.append('')
+        lines.append('**Labels:** {}'.format(', '.join(labels)))
+    
+    # Add link if exists
+    link = topic.get('link', '')
+    if link and not link.startswith('['):
+        lines.append('')
+        lines.append('[Link]({})'.format(link))
+    
+    # Add comments if exists
+    comments = topic.get('comment', [])
+    if comments:
+        lines.append('')
+        lines.append('**Comments:**')
+        for comment in comments:
+            author = comment.get('author', 'Unknown')
+            content = comment.get('content', '')
+            lines.append('- **{}**: {}'.format(author, content.replace('\n', ' ')))
+    
+    # Process children topics
+    children = topic.get('topics', [])
+    if children:
+        lines.append('')
+        for child in children:
+            lines.extend(_topic_to_markdown(child, level + 1))
+    
+    return lines

@@ -8,6 +8,7 @@ Usage:
 Example:
  xmindparser C:\\tests\\my.xmind -json
  xmindparser C:\\tests\\my.xmind -xml
+ xmindparser C:\\tests\\my.xmind -markdown
 
 """
 

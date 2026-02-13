@@ -19,6 +19,7 @@ cd /your/xmind/dir
 
 xmindparser your.xmind -json
 xmindparser your.xmind -xml
+xmindparser your.xmind -markdown
 ```
 
 Note: Parse to xml file type require [dicttoxml](https://pypi.org/project/dicttoxml/).
@@ -33,6 +34,26 @@ print(d)
 ```
 
 See example output: [json](doc/example.json)
+
+### Convert to Markdown
+
+```python
+from xmindparser import xmind_to_markdown
+
+# Convert xmind to markdown file
+output_file = xmind_to_markdown('/path/to/your/xmind')
+print(f'Generated: {output_file}')
+```
+
+Or use the generic `xmind_to_file` function:
+
+```python
+from xmindparser import xmind_to_file
+
+# Convert to markdown
+output_file = xmind_to_file('/path/to/your/xmind', 'markdown')
+print(f'Generated: {output_file}')
+```
 
 ## Configuration
 
@@ -113,6 +134,7 @@ content_json = get_xmind_zen_builtin_json(xmind_zen_file)
 - [Download xmind zen example](tests/xmind_zen.xmind)
 - Output: [json example](doc/example.json)
 - Output: [xml example](doc/example.xml)
+- Output: [markdown example](doc/example.md)
 
 ## License
 
