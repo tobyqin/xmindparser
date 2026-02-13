@@ -72,6 +72,3 @@ def test_read_builtin_xmind_zen():
     assert out
 
 
-def test_real_file():
-    f = '/Users/tobyqin/Desktop/bad.xmind'
-    xmind_to_dict(f)

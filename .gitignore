@@ -100,3 +100,7 @@ uploads/
 *.db3
 
 .DS_Store
+
+# Claude Code
+CLAUDE.md
+.claude/

@@ -22,7 +22,7 @@ classifiers = ["License :: OSI Approved :: MIT License",
                "Topic :: Utilities",
                "Operating System :: Microsoft :: Windows",
                "Operating System :: MacOS :: MacOS X"] + [
-                  ("Programming Language :: Python :: %s" % x) for x in "3.4 3.5 3.6 3.7 3.8".split()]
+                  ("Programming Language :: Python :: %s" % x) for x in "3.9 3.10 3.11 3.12 3.13".split()]
 
 
 def command_line():
@@ -39,7 +39,7 @@ def main():
         keywords="xmind parser converter json xml",
         long_description=long_description,
         classifiers=classifiers,
-        version="1.0.8",
+        version="1.0.9",
         author="Toby Qin",
         author_email="toby.qin@live.com",
         url="https://github.com/tobyqin/xmindparser",

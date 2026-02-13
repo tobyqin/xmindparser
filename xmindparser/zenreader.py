@@ -62,7 +62,7 @@ def node_to_dict(node):
             del d['link']
             d['title'] = '[Attachment]{0}'.format(d['title'])
 
-    if child:
+    if child is not None:
         d['topics'] = []
         for c in child:
             d['topics'].append(node_to_dict(c))

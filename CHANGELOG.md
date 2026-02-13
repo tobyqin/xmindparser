@@ -1,5 +1,10 @@
 Change Log
 ----------
+1.0.9
+
+- Update Python version classifiers to support 3.9, 3.10, 3.11, 3.12, 3.13.
+- Fix DeprecationWarning for element truth value testing in Python 3.13.
+
 1.0.8
 
 - Handle empty title name for xmind zen in some cases.
