@@ -55,6 +55,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install build twine
 
+      - name: Set version from tag
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          sed -i 's/version="[^"]*"/version="'$VERSION'"/' setup.py
+
       - name: Build package
         run: |
           python -m build
