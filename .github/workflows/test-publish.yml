@@ -59,7 +59,7 @@ jobs:
         run: |
           VERSION=${GITHUB_REF#refs/tags/v}
           echo "VERSION=$VERSION" >> $GITHUB_ENV
-          sed -i 's/version="[^"]*"/version="'$VERSION'"/' setup.py
+          sed -i "s/version=\"[^\"]*\"/version=\"$VERSION\"/" setup.py
 
       - name: Build package
         run: |
