@@ -132,6 +132,7 @@ content_json = get_xmind_zen_builtin_json(xmind_zen_file)
 
 - [Download xmind pro example](tests/xmind_pro.xmind)
 - [Download xmind zen example](tests/xmind_zen.xmind)
+- [Download xmind 2026 example](tests/xmind_2026.xmind)
 - Output: [json example](doc/example.json)
 - Output: [xml example](doc/example.xml)
 - Output: [markdown example](doc/example.md)

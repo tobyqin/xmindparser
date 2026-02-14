@@ -134,6 +134,7 @@ content_json = get_xmind_zen_builtin_json(xmind_zen_file)
 
 - [下载 xmind pro 示例](tests/xmind_pro.xmind)
 - [下载 xmind zen 示例](tests/xmind_zen.xmind)
+- [下载 xmind 2026 示例](tests/xmind_2026.xmind)
 - 输出：[json 示例](doc/example.json)
 - 输出：[xml 示例](doc/example.xml)
 - 输出：[markdown 示例](doc/example.md)
