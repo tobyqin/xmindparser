@@ -1,0 +1,174 @@
+[
+  {
+    "title": "test",
+    "topic": {
+      "title": "test",
+      "topics": [
+        {
+          "title": "a",
+          "topics": [
+            {
+              "title": "e",
+              "topics": [
+                {
+                  "title": "f",
+                  "topics": [
+                    {
+                      "title": "g"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "d"
+            },
+            {
+              "title": "e",
+              "topics": [
+                {
+                  "title": ""
+                }
+              ]
+            },
+            {
+              "title": "",
+              "topics": [
+                {
+                  "title": "h",
+                  "topics": [
+                    {
+                      "title": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "b",
+          "topics": [
+            {
+              "title": "types",
+              "topics": [
+                {
+                  "title": "comment"
+                },
+                {
+                  "title": "note",
+                  "note": "hello",
+                  "topics": [
+                    {
+                      "title": "note2",
+                      "note": "hello"
+                    },
+                    {
+                      "title": "note3",
+                      "note": "hello"
+                    }
+                  ]
+                },
+                {
+                  "title": "label",
+                  "labels": [
+                    "this",
+                    "that",
+                    "then"
+                  ]
+                },
+                {
+                  "title": "attachment",
+                  "topics": [
+                    {
+                      "title": "test.txt"
+                    }
+                  ]
+                },
+                {
+                  "title": "marker",
+                  "makers": [
+                    "tag-orange",
+                    "priority-2",
+                    "task-oct",
+                    "flag-orange",
+                    "star-orange",
+                    "people-orange",
+                    "c_symbol_like"
+                  ]
+                },
+                {
+                  "title": "pic",
+                  "topics": [
+                    {
+                      "title": "0.jpeg",
+                      "image": {
+                        "src": "xap:resources/9afc60beae59d849e741ae11d19d638a7b89090ee6c7b772159db271142bcee6.jpeg"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "title": "sticker1",
+                  "image": {
+                    "src": "xap:resources/dd46d29fc64e6eb4e2aac3f78ab162b7177ae0608be431ebf261cad179b2fdad.svg"
+                  }
+                },
+                {
+                  "title": "sticker2",
+                  "image": {
+                    "src": "xap:resources/129b1b21c5946e3f1692f39dcd7d18e0241c66c0b92959cbdbf414a2d40defbd.svg"
+                  }
+                },
+                {
+                  "title": "link",
+                  "topics": [
+                    {
+                      "title": "to url",
+                      "link": "http://github.com"
+                    },
+                    {
+                      "title": "to file"
+                    },
+                    {
+                      "title": "to topic"
+                    }
+                  ]
+                },
+                {
+                  "title": "测试",
+                  "topics": [
+                    {
+                      "title": " note"
+                    },
+                    {
+                      "title": "comment"
+                    }
+                  ]
+                },
+                {
+                  "title": "</>{}[]*+-"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "c",
+          "topics": [
+            {
+              "title": "a"
+            },
+            {
+              "title": "a"
+            },
+            {
+              "title": "a"
+            }
+          ]
+        }
+      ]
+    },
+    "structure": "org.xmind.ui.map.clockwise"
+  }
+]

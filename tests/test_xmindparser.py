@@ -9,10 +9,13 @@ from xmindparser.xreader import logger
 chdir(dirname(dirname(__file__)))
 xmind_pro_file = join(dirname(__file__), 'xmind_pro.xmind')
 xmind_zen_file = join(dirname(__file__), 'xmind_zen.xmind')
+xmind_2026_file = join(dirname(__file__), 'xmind_2026.xmind')
 expected_json_pro = join(dirname(dirname(__file__)), 'doc/example.json')
 expected_json_pro_with_id = join(dirname(dirname(__file__)), 'doc/example_with_id.json')
 expected_json_zen = join(dirname(dirname(__file__)), 'doc/example_zen.json')
 expected_json_zen_with_id = join(dirname(dirname(__file__)), 'doc/example_zen_with_id.json')
+expected_json_2026 = join(dirname(dirname(__file__)), 'doc/example_2026.json')
+expected_json_2026_with_id = join(dirname(dirname(__file__)), 'doc/example_2026_with_id.json')
 set_logger_level(logging.DEBUG)
 
 
@@ -75,5 +78,19 @@ def test_xmind_to_markdown():
 def test_read_builtin_xmind_zen():
     out = get_xmind_zen_builtin_json(xmind_zen_file)
     assert out
+
+
+def test_xmind_to_dict_debug_2026():
+    config['showTopicId'] = True
+    d = xmind_to_dict(xmind_2026_file)
+    logger.info(dumps(d))
+    assert load_json(expected_json_2026_with_id) == d
+
+
+def test_xmind_to_dict_default_2026():
+    config['showTopicId'] = False
+    d = xmind_to_dict(xmind_2026_file)
+    logger.info(dumps(d))
+    assert load_json(expected_json_2026) == d
 
 
