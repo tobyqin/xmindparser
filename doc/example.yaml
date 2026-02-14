@@ -1,0 +1,99 @@
+- structure: org.xmind.ui.map.unbalanced
+  title: Sheet 1
+  topic:
+    makers:
+    - star-orange
+    title: test
+    topics:
+    - link: http://test.com
+      title: a
+      topics:
+      - title: e
+        topics:
+        - title: f
+          topics:
+          - title: g
+      - title: d
+        topics:
+        - title: null
+      - makers:
+        - symbol-plus
+        title: e
+        topics:
+        - note: this is a note
+          title: null
+      - title: null
+        topics:
+        - title: h
+          topics:
+          - comment:
+            - author: toby.qin
+              content: this a comments
+            title: null
+    - makers:
+      - task-done
+      - flag-red
+      - people-red
+      - arrow-up
+      title: b
+      topics:
+      - title: types
+        topics:
+        - comment:
+          - author: toby.qin
+            content: comment1
+          - author: toby.qin
+            content: comment2
+          - author: toby.qin
+            content: "comment3\r\nnew line"
+          title: comment
+        - note: 1 line note
+          title: note
+          topics:
+          - note: "line1\r\nline2"
+            title: note2
+          - note: "note with style\r\nline with strike"
+            title: note3
+        - labels:
+          - this is a  label
+          title: label
+        - title: attachment
+          topics:
+          - title: '[Attachment]test.txt'
+        - title: pic
+          topics:
+          - title: '[Image]'
+        - title: links
+          topics:
+          - link: http://test.com
+            title: to url
+          - link: file:////abc/ef
+            title: to file
+          - link: '[To another xmind topic!]'
+            title: to topic
+      - title: 测试
+        topics:
+        - note: 测试中文
+          title: note
+        - comment:
+          - author: toby.qin
+            content: 中文测试
+          title: comments
+      - title: </>{}[]*+-
+    - title: c
+      topics:
+      - title: a
+      - title: a
+      - link: '[To another xmind topic!]'
+        title: a
+- structure: org.xmind.ui.map.unbalanced
+  title: Sheet 2
+  topic:
+    title: test2
+    topics:
+    - title: a
+      topics:
+      - title: '1'
+      - title: '2'
+      - title: '3'
+    - title: b

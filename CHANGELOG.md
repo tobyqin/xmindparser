@@ -1,6 +1,13 @@
 ## Change Log
 
-1.1.2
+1.2.0
+
+- Add YAML export support with `xmind_to_yaml()` function.
+- Add support for Xmind 2026 file format.
+- Update documentation with local Chinese README and developer guide.
+- Rename Xmind legacy to Xmind 8, Xmind Zen to Xmind.
+
+  1.1.2
 
 - Fix Chinese character encoding issue in JSON export by adding `ensure_ascii=False` to `json.dumps()`.
 

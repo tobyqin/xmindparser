@@ -1,0 +1,65 @@
+- structure: org.xmind.ui.map.unbalanced
+  title: Map 1
+  topic:
+    image:
+      src: xap:resources/6cca606c3f2028e5ee7794459510ce1fd8855e5e8af44c5af91a212bc7f71462.svg
+      type: image
+    title: Central Topic
+    topics:
+    - makers:
+      - priority-1
+      title: topic 1
+      topics:
+      - note: 'note info
+
+          new line of note'
+        title: note topic
+      - labels:
+        - great
+        title: label topic
+        topics:
+        - note: hello world
+          title: formatted note
+      - link: http://www.link.com
+        title: link topic
+      - callout:
+        - Callout
+        title: callout topic
+      - makers:
+        - priority-2
+        - smiley-smile
+        - task-oct
+        - flag-orange
+        title: makers topic
+      - image:
+          src: xap:resources/82d831f17e8c6cad32ff1791060d24488fab8c64186b07894e38b3a35013f736.svg
+          type: image
+        title: sticker topic
+      - image:
+          src: xap:resources/40af36d11c22d4747e35dd2d82cfa2c0e6ed91a333fa77b18c8d2e675e7b9fa0.png
+          type: image
+        title: image topic
+      - title: attachment topic
+        topics:
+        - link: xap:resources/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.txt
+          title: test.txt
+    - makers:
+      - priority-2
+      title: topic 2
+      topics:
+      - title: '123'
+      - title: ''
+        topics:
+        - title: topic after empty
+      - title: 中文
+      - title: <>{}*&^^&*^%@!
+        topics:
+        - title: topic with special chars
+      - title: formatted topic
+- structure: org.xmind.ui.map.unbalanced
+  title: Map 2
+  topic:
+    title: another sheet
+    topics:
+    - title: Main Topic 1
+    - title: Main Topic 2
