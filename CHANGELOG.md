@@ -1,6 +1,10 @@
 ## Change Log
 
-1.1.1
+1.1.2
+
+- Fix Chinese character encoding issue in JSON export by adding `ensure_ascii=False` to `json.dumps()`.
+
+  1.1.1
 
 - Add Python 3.14 support.
 

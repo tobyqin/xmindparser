@@ -88,7 +88,7 @@ def xmind_to_json(file_path):
     target = _get_out_file_name(file_path, 'json')
 
     with open(target, 'w', encoding='utf8') as f:
-        f.write(json.dumps(xmind_to_dict(file_path), indent=2))
+        f.write(json.dumps(xmind_to_dict(file_path), indent=2, ensure_ascii=False))
 
     return target
 
