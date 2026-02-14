@@ -4,7 +4,7 @@
 
 Parse xmind file to programmable data type (e.g. json, xml). Python 3.x required. Now it supports XmindZen file type as well.
 
-See also: [xmind2testlink](https://github.com/tobyqin/xmind2testlink) / [中文文档](https://betacat.online/posts/2018-07-01/parse-xmind-to-programmable-data-type/)
+See also: [xmind2testlink](https://github.com/tobyqin/xmind2testlink) / [中文文档](README_CN.md)
 
 ## Installation
 
@@ -104,7 +104,7 @@ Please note, there are a few differences between xmind legacy and xmind zen.
 
 - Comments feature removed, so I will not parse it in ZEN.
 - Add feature - sticker, I parse it as `image` dict type.
-- Add feature - callout, I parse it as `list` type. (not sure existed in lagacy?)
+- Add feature - callout, I parse it as `list` type. (not sure existed in legacy?)
 
 Since XmindZen has upgraded the internal content file as json, you can read it by code like this:
 
@@ -135,26 +135,6 @@ content_json = get_xmind_zen_builtin_json(xmind_zen_file)
 - Output: [json example](doc/example.json)
 - Output: [xml example](doc/example.xml)
 - Output: [markdown example](doc/example.md)
-
-## For Developers
-
-### Publish New Version
-
-This project uses GitHub Actions to automatically publish to PyPI when a new version tag is pushed.
-
-1. Update version in [`setup.py`](setup.py:42) and [`CHANGELOG.md`](CHANGELOG.md)
-2. Commit and push changes to GitHub
-3. Create and push a new version tag:
-   ```shell
-   git tag v1.1.0
-   git push origin v1.1.0
-   ```
-4. GitHub Actions will automatically:
-   - Run tests on Python 3.9-3.13
-   - Build and publish to PyPI
-   - Create GitHub Release with source distribution
-
-**Note:** Requires `PYPI_API_TOKEN` secret to be configured in repository settings.
 
 ## License
 
