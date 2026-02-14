@@ -76,13 +76,24 @@ def test_xmind_to_markdown():
 
 
 def test_xmind_to_yaml():
+    try:
+        import yaml
+    except ImportError:
+        import pytest
+        pytest.skip("pyyaml not installed")
+    
     convert_to_file(xmind_to_yaml, xmind_pro_file, 'tests/xmind_pro.yaml')
     convert_to_file(xmind_to_yaml, xmind_zen_file, 'tests/xmind_zen.yaml')
 
 
 def test_xmind_to_yaml_content():
     """Test that YAML output matches the expected structure."""
-    import yaml
+    try:
+        import yaml
+    except ImportError:
+        import pytest
+        pytest.skip("pyyaml not installed")
+    
     import io
     
     # Test xmind pro
