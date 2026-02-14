@@ -5,6 +5,7 @@
 - Add support for converting xmind to markdown format.
 - New function `xmind_to_markdown()` to convert xmind file to markdown.
 - Command line support: `xmindparser your.xmind -markdown`.
+- Add Python 3.14 support.
 
   1.0.9
 

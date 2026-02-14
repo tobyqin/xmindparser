@@ -22,7 +22,7 @@ classifiers = ["License :: OSI Approved :: MIT License",
                "Topic :: Utilities",
                "Operating System :: Microsoft :: Windows",
                "Operating System :: MacOS :: MacOS X"] + [
-                  ("Programming Language :: Python :: %s" % x) for x in "3.9 3.10 3.11 3.12 3.13".split()]
+                  ("Programming Language :: Python :: %s" % x) for x in "3.9 3.10 3.11 3.12 3.13 3.14".split()]
 
 
 def command_line():
