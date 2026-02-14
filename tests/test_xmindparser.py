@@ -80,6 +80,31 @@ def test_xmind_to_yaml():
     convert_to_file(xmind_to_yaml, xmind_zen_file, 'tests/xmind_zen.yaml')
 
 
+def test_xmind_to_yaml_content():
+    """Test that YAML output matches the expected structure."""
+    import yaml
+    import io
+    
+    # Test xmind pro
+    config['showTopicId'] = False
+    d = xmind_to_dict(xmind_pro_file)
+    yaml_str = yaml.dump(d, allow_unicode=True, default_flow_style=False)
+    yaml_data = yaml.safe_load(yaml_str)
+    assert yaml_data == d
+    
+    # Test xmind zen
+    d = xmind_to_dict(xmind_zen_file)
+    yaml_str = yaml.dump(d, allow_unicode=True, default_flow_style=False)
+    yaml_data = yaml.safe_load(yaml_str)
+    assert yaml_data == d
+    
+    # Test xmind 2026
+    d = xmind_to_dict(xmind_2026_file)
+    yaml_str = yaml.dump(d, allow_unicode=True, default_flow_style=False)
+    yaml_data = yaml.safe_load(yaml_str)
+    assert yaml_data == d
+
+
 def test_read_builtin_xmind_zen():
     out = get_xmind_zen_builtin_json(xmind_zen_file)
     assert out
