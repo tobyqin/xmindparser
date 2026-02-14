@@ -2,7 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/xmindparser.svg)](https://pypi.org/project/xmindparser/)
 
-Parse xmind file to programmable data type (e.g. json, xml). Python 3.x required. Now it supports XmindZen file type as well.
+Parse xmind file to programmable data type (e.g. json, xml). Python 3.x required. Now it supports Xmind (including Xmind Zen and Xmind 2026) file type as well.
 
 See also: [xmind2testlink](https://github.com/tobyqin/xmind2testlink) / [中文文档](README_CN.md)
 
@@ -75,7 +75,7 @@ print(d)
 
 ```
 
-## Limitations (for Xmind legacy version)
+## Limitations (for Xmind 8)
 
 Please note, following xmind features will not be supported or partially supported.
 
@@ -89,9 +89,9 @@ Please note, following xmind features will not be supported or partially support
 - Will not parse image object, only name it as `[Image]`
 - Rich text format in notes will be parsed as plain text.
 
-## XmindZen Supporting
+## Xmind (including Zen and 2026)
 
-`xmindparser` will auto detect xmind file created by XmindZen or XmindPro, you can pass in ZEN file as usual.
+`xmindparser` will auto detect xmind file created by Xmind (including Zen/2026 version) or Xmind 8, you can pass in the file as usual.
 
 ```python
 from xmindparser import xmind_to_dict
@@ -100,13 +100,13 @@ d = xmind_to_dict('/path/to/your/xmind_zen_file')
 print(d)
 ```
 
-Please note, there are a few differences between xmind legacy and xmind zen.
+Please note, there are a few differences between Xmind 8 and Xmind (Zen/2026).
 
 - Comments feature removed, so I will not parse it in ZEN.
 - Add feature - sticker, I parse it as `image` dict type.
 - Add feature - callout, I parse it as `list` type. (not sure existed in legacy?)
 
-Since XmindZen has upgraded the internal content file as json, you can read it by code like this:
+Since Xmind (Zen/2026) uses json as the internal content file, you can read it by code like this:
 
 ```python
 import json
@@ -130,8 +130,8 @@ content_json = get_xmind_zen_builtin_json(xmind_zen_file)
 
 ![Xmind Example](doc/xmind.png)
 
-- [Download xmind pro example](tests/xmind_pro.xmind)
-- [Download xmind zen example](tests/xmind_zen.xmind)
+- [Download xmind 8 example](tests/xmind_pro.xmind)
+- [Download xmind (Zen/2026) example](tests/xmind_zen.xmind)
 - [Download xmind 2026 example](tests/xmind_2026.xmind)
 - Output: [json example](doc/example.json)
 - Output: [xml example](doc/example.xml)

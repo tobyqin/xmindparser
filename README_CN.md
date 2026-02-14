@@ -2,7 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/xmindparser.svg)](https://pypi.org/project/xmindparser/)
 
-将 xmind 文件转换为可编程的数据类型（如 json、xml）。需要 Python 3.x。支持 XmindZen 文件类型。
+将 xmind 文件转换为可编程的数据类型（如 json、xml）。需要 Python 3.x。支持 Xmind（包括 Xmind Zen 和 Xmind 2026）文件类型。
 
 相关项目：[xmind2testlink](https://github.com/tobyqin/xmind2testlink)
 
@@ -77,7 +77,7 @@ print(d)
 
 ```
 
-## 限制（针对 Xmind 传统版本）
+## 限制（针对 Xmind 8）
 
 请注意，以下 xmind 功能将不被支持或仅部分支持。
 
@@ -91,9 +91,9 @@ print(d)
 - 不会解析图片对象，仅将其命名为 `[Image]`
 - 笔记中的富文本格式将解析为纯文本
 
-## XmindZen 支持
+## Xmind 支持（包括 Zen 和 2026）
 
-`xmindparser` 会自动检测 XmindZen 或 XmindPro 创建的 xmind 文件，您可以像平常一样传入 ZEN 文件。
+`xmindparser` 会自动检测 Xmind（包括 Zen/2026 版本）或 Xmind 8 创建的 xmind 文件，您可以像平常一样传入文件。
 
 ```python
 from xmindparser import xmind_to_dict
@@ -102,13 +102,13 @@ d = xmind_to_dict('/path/to/your/xmind_zen_file')
 print(d)
 ```
 
-请注意，xmind 传统版和 xmind zen 之间存在一些差异。
+请注意，Xmind 8 和 Xmind（Zen/2026）之间存在一些差异。
 
 - 评论功能已移除，因此我不会在 ZEN 中解析它
 - 新增功能 - 贴纸，我将其解析为 `image` 字典类型
 - 新增功能 - 标注，我将其解析为 `list` 类型（不确定传统版中是否存在？）
 
-由于 XmindZen 已将内部内容文件升级为 json，您可以通过以下代码读取：
+由于 Xmind（Zen/2026）使用 json 作为内部内容文件，您可以通过以下代码读取：
 
 ```python
 import json
@@ -132,8 +132,8 @@ content_json = get_xmind_zen_builtin_json(xmind_zen_file)
 
 ![Xmind 示例](doc/xmind.png)
 
-- [下载 xmind pro 示例](tests/xmind_pro.xmind)
-- [下载 xmind zen 示例](tests/xmind_zen.xmind)
+- [下载 xmind 8 示例](tests/xmind_pro.xmind)
+- [下载 xmind（Zen/2026）示例](tests/xmind_zen.xmind)
 - [下载 xmind 2026 示例](tests/xmind_2026.xmind)
 - 输出：[json 示例](doc/example.json)
 - 输出：[xml 示例](doc/example.xml)
