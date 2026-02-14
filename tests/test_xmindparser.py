@@ -75,6 +75,11 @@ def test_xmind_to_markdown():
     convert_to_file(xmind_to_markdown, xmind_zen_file, 'tests/xmind_zen.md')
 
 
+def test_xmind_to_yaml():
+    convert_to_file(xmind_to_yaml, xmind_pro_file, 'tests/xmind_pro.yaml')
+    convert_to_file(xmind_to_yaml, xmind_zen_file, 'tests/xmind_zen.yaml')
+
+
 def test_read_builtin_xmind_zen():
     out = get_xmind_zen_builtin_json(xmind_zen_file)
     assert out

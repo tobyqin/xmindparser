@@ -21,10 +21,14 @@ cd /your/xmind/dir
 
 xmindparser your.xmind -json
 xmindparser your.xmind -xml
+xmindparser your.xmind -yaml
 xmindparser your.xmind -markdown
 ```
 
-注意：解析为 xml 文件类型需要安装 [dicttoxml](https://pypi.org/project/dicttoxml/)。
+注意：解析为 xml/yaml 文件类型需要安装额外依赖：
+
+- xml：[dicttoxml](https://pypi.org/project/dicttoxml/)
+- yaml：[pyyaml](https://pypi.org/project/pyyaml/)
 
 ## 使用方法 - Python 代码
 

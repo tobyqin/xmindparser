@@ -8,6 +8,11 @@ import os
 import sys
 from zipfile import ZipFile
 
+try:
+    import yaml
+except ImportError:
+    yaml = None
+
 config = {'logName': __name__,
           'logLevel': None,
           'logFormat': '%(asctime)s %(levelname)-8s: %(message)s',
@@ -80,6 +85,9 @@ def xmind_to_file(file_path, file_type):
     elif file_type == 'markdown' or file_type == 'md':
         return xmind_to_markdown(file_path)
 
+    elif file_type == 'yaml' or file_type == 'yml':
+        return xmind_to_yaml(file_path)
+
     else:
         raise ValueError('Not supported file type: {}'.format(file_type))
 
@@ -123,6 +131,21 @@ def xmind_to_markdown(file_path):
     
     with open(target, 'w', encoding='utf8') as f:
         f.write('\n'.join(markdown_lines))
+    
+    return target
+
+
+def xmind_to_yaml(file_path):
+    """Convert xmind file to yaml format."""
+    if yaml is None:
+        raise ImportError('Parse xmind to yaml require "pyyaml", try install via pip:\n' +
+                         '> pip install pyyaml')
+    
+    data = xmind_to_dict(file_path)
+    target = _get_out_file_name(file_path, 'yaml')
+    
+    with open(target, 'w', encoding='utf8') as f:
+        yaml.dump(data, f, allow_unicode=True, default_flow_style=False)
     
     return target
 

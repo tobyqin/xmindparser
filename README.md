@@ -19,10 +19,14 @@ cd /your/xmind/dir
 
 xmindparser your.xmind -json
 xmindparser your.xmind -xml
+xmindparser your.xmind -yaml
 xmindparser your.xmind -markdown
 ```
 
-Note: Parse to xml file type require [dicttoxml](https://pypi.org/project/dicttoxml/).
+Note: Parse to xml/yaml file types require additional packages:
+
+- xml: [dicttoxml](https://pypi.org/project/dicttoxml/)
+- yaml: [pyyaml](https://pypi.org/project/pyyaml/)
 
 ## Usage - via Python
 
