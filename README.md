@@ -73,6 +73,8 @@ config['logLevel'] = logging.DEBUG
 config['logFormat'] = '%(asctime)s %(levelname)-8s: %(message)s'
 config['showTopicId'] = True  # internal id will be included, default = False
 config['hideEmptyValue'] = False  # empty values will be hidden, default = True
+config['showStructure'] = False  # include structure info for sheets, default = True
+config['showRelationship'] = True  # include relationship info for Zen/2026 files, default = False
 
 # Apply the config changes (required for logging settings to take effect)
 apply_config()
@@ -82,7 +84,7 @@ print(d)
 
 ```
 
-**Note:** After modifying logging-related config options (`logName`, `logLevel`, `logFormat`), you must call `apply_config()` to apply the changes. The `showTopicId` and `hideEmptyValue` options take effect immediately without calling `apply_config()`.
+**Note:** After modifying logging-related config options (`logName`, `logLevel`, `logFormat`), you must call `apply_config()` to apply the changes. The `showTopicId`, `hideEmptyValue`, `showStructure`, and `showRelationship` options take effect immediately without calling `apply_config()`.
 
 ## Limitations (for Xmind 8)
 
@@ -92,7 +94,7 @@ Please note, following xmind features will not be supported or partially support
 - Will not parse floating topics.
 - Will not parse linked topics.
 - Will not parse summary info.
-- Will not parse relationship info.
+- Will not parse relationship info (except for Xmind Zen/2026 when `showRelationship` is enabled).
 - Will not parse boundary info.
 - Will not parse attachment object, only name it as `[Attachment] - name`
 - Will not parse image object, only name it as `[Image]`

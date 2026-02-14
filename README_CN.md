@@ -75,6 +75,8 @@ config['logLevel'] = logging.DEBUG
 config['logFormat'] = '%(asctime)s %(levelname)-8s: %(message)s'
 config['showTopicId'] = True  # 包含内部 id，默认为 False
 config['hideEmptyValue'] = False  # 隐藏空值，默认为 True
+config['showStructure'] = False  # 包含工作表的结构信息，默认为 True
+config['showRelationship'] = True  # 包含关系信息（针对 Zen/2026 文件），默认为 False
 
 # 应用配置更改（日志相关设置需要调用此函数才能生效）
 apply_config()
@@ -84,7 +86,7 @@ print(d)
 
 ```
 
-**注意：** 修改日志相关的配置选项（`logName`、`logLevel`、`logFormat`）后，必须调用 `apply_config()` 来应用更改。`showTopicId` 和 `hideEmptyValue` 选项无需调用 `apply_config()` 即可立即生效。
+**注意：** 修改日志相关的配置选项（`logName`、`logLevel`、`logFormat`）后，必须调用 `apply_config()` 来应用更改。`showTopicId`、`hideEmptyValue`、`showStructure` 和 `showRelationship` 选项无需调用 `apply_config()` 即可立即生效。
 
 ## 限制（针对 Xmind 8）
 
@@ -94,7 +96,7 @@ print(d)
 - 不会解析浮动主题
 - 不会解析链接主题
 - 不会解析摘要信息
-- 不会解析关系信息
+- 不会解析关系信息（除非针对 Xmind Zen/2026 启用 `showRelationship` 时）
 - 不会解析边界信息
 - 不会解析附件对象，仅将其命名为 `[Attachment] - name`
 - 不会解析图片对象，仅将其命名为 `[Image]`

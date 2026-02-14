@@ -13,11 +13,15 @@ try:
 except ImportError:
     yaml = None
 
-config = {'logName': __name__,
-          'logLevel': None,
-          'logFormat': '%(asctime)s %(levelname)-8s: %(message)s',
-          'showTopicId': False,
-          'hideEmptyValue': True}
+config = {
+    "logName": __name__,
+    "logLevel": None,
+    "logFormat": "%(asctime)s %(levelname)-8s: %(message)s",
+    "showTopicId": False,
+    "hideEmptyValue": True,
+    "showRelationship": False,
+    "showStructure": True,
+}
 
 cache = {}
 
@@ -29,24 +33,24 @@ _console_handler = None
 def _init_logger():
     """Initialize or reinitialize the logger based on current config."""
     global logger, _console_handler
-    
-    log_name = config['logName'] or __name__
-    log_level = config['logLevel'] or logging.WARNING
-    log_fmt = config['logFormat'] or '%(asctime)s %(levelname)-8s: %(message)s'
-    
+
+    log_name = config["logName"] or __name__
+    log_level = config["logLevel"] or logging.WARNING
+    log_fmt = config["logFormat"] or "%(asctime)s %(levelname)-8s: %(message)s"
+
     # Remove existing handler if present
     if logger and _console_handler:
         logger.removeHandler(_console_handler)
-    
+
     # Create or get logger
     logger = logging.getLogger(log_name)
     logger.setLevel(log_level)
-    
+
     # Create new console handler with current format
     _console_handler = logging.StreamHandler(sys.stdout)
     _console_handler.setFormatter(logging.Formatter(log_fmt))
     logger.addHandler(_console_handler)
-    
+
     return logger
 
 
@@ -68,7 +72,7 @@ _init_logger()
 def is_xmind_zen(file_path):
     """Determine if this is a xmind zen file type."""
     with ZipFile(file_path) as xmind:
-        return 'content.json' in xmind.namelist()
+        return "content.json" in xmind.namelist()
 
 
 def get_xmind_zen_builtin_json(file_path):
@@ -76,14 +80,16 @@ def get_xmind_zen_builtin_json(file_path):
     name = "content.json"
     with ZipFile(file_path) as xmind:
         if name in xmind.namelist():
-            content = xmind.open(name).read().decode('utf-8')
+            content = xmind.open(name).read().decode("utf-8")
             return json.loads(content)
 
         raise AssertionError("Not a xmind zen file type!")
 
 
 def _get_out_file_name(xmind_file, suffix):
-    assert isinstance(xmind_file, str) and xmind_file.endswith('.xmind'), "Invalid xmind file!"
+    assert isinstance(xmind_file, str) and xmind_file.endswith(".xmind"), (
+        "Invalid xmind file!"
+    )
     name = os.path.abspath(xmind_file[0:-5] + suffix)
 
     return name
@@ -106,26 +112,26 @@ def xmind_to_dict(file_path):
 
 
 def xmind_to_file(file_path, file_type):
-    if file_type == 'json':
+    if file_type == "json":
         return xmind_to_json(file_path)
 
-    elif file_type == 'xml':
+    elif file_type == "xml":
         return xmind_to_xml(file_path)
 
-    elif file_type == 'markdown' or file_type == 'md':
+    elif file_type == "markdown" or file_type == "md":
         return xmind_to_markdown(file_path)
 
-    elif file_type == 'yaml' or file_type == 'yml':
+    elif file_type == "yaml" or file_type == "yml":
         return xmind_to_yaml(file_path)
 
     else:
-        raise ValueError('Not supported file type: {}'.format(file_type))
+        raise ValueError("Not supported file type: {}".format(file_type))
 
 
 def xmind_to_json(file_path):
-    target = _get_out_file_name(file_path, 'json')
+    target = _get_out_file_name(file_path, "json")
 
-    with open(target, 'w', encoding='utf8') as f:
+    with open(target, "w", encoding="utf8") as f:
         f.write(json.dumps(xmind_to_dict(file_path), indent=2, ensure_ascii=False))
 
     return target
@@ -135,111 +141,116 @@ def xmind_to_xml(file_path):
     try:
         from dicttoxml import dicttoxml
         from xml.dom.minidom import parseString
-        target = _get_out_file_name(file_path, 'xml')
-        xml = dicttoxml(xmind_to_dict(file_path), custom_root='root')
-        xml = parseString(xml.decode('utf8')).toprettyxml(encoding='utf8')
 
-        with open(target, 'w', encoding='utf8') as f:
-            f.write(xml.decode('utf8'))
+        target = _get_out_file_name(file_path, "xml")
+        xml = dicttoxml(xmind_to_dict(file_path), custom_root="root")
+        xml = parseString(xml.decode("utf8")).toprettyxml(encoding="utf8")
+
+        with open(target, "w", encoding="utf8") as f:
+            f.write(xml.decode("utf8"))
 
         return target
     except ImportError:
-        raise ImportError('Parse xmind to xml require "dicttoxml", try install via pip:\n' +
-                          '> pip install dicttoxml')
+        raise ImportError(
+            'Parse xmind to xml require "dicttoxml", try install via pip:\n'
+            + "> pip install dicttoxml"
+        )
 
 
 def xmind_to_markdown(file_path):
     """Convert xmind file to markdown format."""
     data = xmind_to_dict(file_path)
-    target = _get_out_file_name(file_path, 'md')
-    
+    target = _get_out_file_name(file_path, "md")
+
     markdown_lines = []
-    
+
     for sheet in data:
         markdown_lines.extend(_sheet_to_markdown(sheet))
-        markdown_lines.append('')  # Add empty line between sheets
-    
-    with open(target, 'w', encoding='utf8') as f:
-        f.write('\n'.join(markdown_lines))
-    
+        markdown_lines.append("")  # Add empty line between sheets
+
+    with open(target, "w", encoding="utf8") as f:
+        f.write("\n".join(markdown_lines))
+
     return target
 
 
 def xmind_to_yaml(file_path):
     """Convert xmind file to yaml format."""
     if yaml is None:
-        raise ImportError('Parse xmind to yaml require "pyyaml", try install via pip:\n' +
-                         '> pip install pyyaml')
-    
+        raise ImportError(
+            'Parse xmind to yaml require "pyyaml", try install via pip:\n'
+            + "> pip install pyyaml"
+        )
+
     data = xmind_to_dict(file_path)
-    target = _get_out_file_name(file_path, 'yaml')
-    
-    with open(target, 'w', encoding='utf8') as f:
+    target = _get_out_file_name(file_path, "yaml")
+
+    with open(target, "w", encoding="utf8") as f:
         yaml.dump(data, f, allow_unicode=True, default_flow_style=False)
-    
+
     return target
 
 
 def _sheet_to_markdown(sheet):
     """Convert a sheet to markdown lines."""
     lines = []
-    
+
     # Sheet title as h1
-    title = sheet.get('title', 'Untitled')
-    lines.append('# {}'.format(title))
-    lines.append('')
-    
+    title = sheet.get("title", "Untitled")
+    lines.append("# {}".format(title))
+    lines.append("")
+
     # Process root topic
-    topic = sheet.get('topic', {})
+    topic = sheet.get("topic", {})
     if topic:
         lines.extend(_topic_to_markdown(topic, level=2))
-    
+
     return lines
 
 
 def _topic_to_markdown(topic, level=2):
     """Convert a topic and its children to markdown lines."""
     lines = []
-    
+
     # Topic title as heading
-    title = topic.get('title', '')
+    title = topic.get("title", "")
     if title:
-        heading = '#' * level
-        lines.append('{} {}'.format(heading, title))
-    
+        heading = "#" * level
+        lines.append("{} {}".format(heading, title))
+
     # Add note if exists
-    note = topic.get('note', '')
+    note = topic.get("note", "")
     if note:
-        lines.append('')
-        lines.append('> {}'.format(note.replace('\n', '\n> ')))
-    
+        lines.append("")
+        lines.append("> {}".format(note.replace("\n", "\n> ")))
+
     # Add labels if exists
-    labels = topic.get('labels', [])
+    labels = topic.get("labels", [])
     if labels:
-        lines.append('')
-        lines.append('**Labels:** {}'.format(', '.join(labels)))
-    
+        lines.append("")
+        lines.append("**Labels:** {}".format(", ".join(labels)))
+
     # Add link if exists
-    link = topic.get('link', '')
-    if link and not link.startswith('['):
-        lines.append('')
-        lines.append('[Link]({})'.format(link))
-    
+    link = topic.get("link", "")
+    if link and not link.startswith("["):
+        lines.append("")
+        lines.append("[Link]({})".format(link))
+
     # Add comments if exists
-    comments = topic.get('comment', [])
+    comments = topic.get("comment", [])
     if comments:
-        lines.append('')
-        lines.append('**Comments:**')
+        lines.append("")
+        lines.append("**Comments:**")
         for comment in comments:
-            author = comment.get('author', 'Unknown')
-            content = comment.get('content', '')
-            lines.append('- **{}**: {}'.format(author, content.replace('\n', ' ')))
-    
+            author = comment.get("author", "Unknown")
+            content = comment.get("content", "")
+            lines.append("- **{}**: {}".format(author, content.replace("\n", " ")))
+
     # Process children topics
-    children = topic.get('topics', [])
+    children = topic.get("topics", [])
     if children:
-        lines.append('')
+        lines.append("")
         for child in children:
             lines.extend(_topic_to_markdown(child, level + 1))
-    
+
     return lines

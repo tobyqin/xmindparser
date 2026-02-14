@@ -1,6 +1,14 @@
 ## Change Log
 
-1.2.1
+1.2.2
+
+- Add new config options: `showStructure` (default True) to include/exclude sheet structure info, and `showRelationship` (default False) to include relationship info for Xmind Zen/2026 files.
+- Add support for parsing relationships in Xmind Zen/2026 files when `showRelationship` is enabled.
+- Make structure inclusion conditional for Xmind Zen/2026 files based on `showStructure` config.
+- Add comprehensive tests for the new config options.
+- Update documentation in both English and Chinese READMEs.
+
+  1.2.1
 
 - Fix config system to support dynamic logger reconfiguration.
 - Add `apply_config()` function to apply logging configuration changes.
