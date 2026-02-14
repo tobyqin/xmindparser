@@ -147,10 +147,6 @@ content_json = get_xmind_zen_builtin_json(xmind_zen_file)
 - Output: [yaml example](doc/example.yaml)
 - Output: [markdown example](doc/example.md)
 
-## Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, code style guidelines, and the pull request process.
-
 ## License
 
 MIT
