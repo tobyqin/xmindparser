@@ -20,19 +20,49 @@ config = {'logName': __name__,
           'hideEmptyValue': True}
 
 cache = {}
-_log_name = config['logName'] or __file__
-_log_level = config['logLevel'] or logging.WARNING
-_log_fmt = config['logFormat'] or '%(asctime)s %(levelname)-8s: %(message)s'
 
-logger = logging.getLogger(_log_name)
-logger.setLevel(_log_level)
-console_handler = logging.StreamHandler(sys.stdout)
-console_handler.setFormatter(logging.Formatter(config['logFormat']))
-logger.addHandler(console_handler)
+# Initialize logger with default config
+logger = None
+_console_handler = None
+
+
+def _init_logger():
+    """Initialize or reinitialize the logger based on current config."""
+    global logger, _console_handler
+    
+    log_name = config['logName'] or __name__
+    log_level = config['logLevel'] or logging.WARNING
+    log_fmt = config['logFormat'] or '%(asctime)s %(levelname)-8s: %(message)s'
+    
+    # Remove existing handler if present
+    if logger and _console_handler:
+        logger.removeHandler(_console_handler)
+    
+    # Create or get logger
+    logger = logging.getLogger(log_name)
+    logger.setLevel(log_level)
+    
+    # Create new console handler with current format
+    _console_handler = logging.StreamHandler(sys.stdout)
+    _console_handler.setFormatter(logging.Formatter(log_fmt))
+    logger.addHandler(_console_handler)
+    
+    return logger
 
 
 def set_logger_level(new_level):
-    logger.setLevel(new_level)
+    """Set logger level."""
+    if logger:
+        logger.setLevel(new_level)
+
+
+def apply_config():
+    """Apply current config settings, reinitializing logger if needed."""
+    _init_logger()
+
+
+# Initialize logger on module import
+_init_logger()
 
 
 def is_xmind_zen(file_path):

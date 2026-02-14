@@ -1,6 +1,13 @@
 ## Change Log
 
-1.2.0
+1.2.1
+
+- Fix config system to support dynamic logger reconfiguration.
+- Add `apply_config()` function to apply logging configuration changes.
+- Add comprehensive tests for all config options (hideEmptyValue, logFormat, logLevel, logName).
+- Update documentation with proper config usage examples.
+
+  1.2.0
 
 - Add YAML export support with `xmind_to_yaml()` function.
 - Add support for Xmind 2026 file format.

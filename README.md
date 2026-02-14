@@ -65,19 +65,24 @@ If you use `xmindparser` via Python, it provides a `config` object, check this e
 
 ```python
 import logging
-from xmindparser import xmind_to_dict,config
+from xmindparser import xmind_to_dict, config, apply_config
 
-config = {'logName': 'your_log_name',
-          'logLevel': logging.DEBUG,
-          'logFormat': '%(asctime)s %(levelname)-8s: %(message)s',
-          'showTopicId': True, # internal id will be included, default = False
-          'hideEmptyValue': False  # empty values will be hidden, default = True
-          }
+# Modify config settings
+config['logName'] = 'your_log_name'
+config['logLevel'] = logging.DEBUG
+config['logFormat'] = '%(asctime)s %(levelname)-8s: %(message)s'
+config['showTopicId'] = True  # internal id will be included, default = False
+config['hideEmptyValue'] = False  # empty values will be hidden, default = True
+
+# Apply the config changes (required for logging settings to take effect)
+apply_config()
 
 d = xmind_to_dict('/path/to/your/xmind')
 print(d)
 
 ```
+
+**Note:** After modifying logging-related config options (`logName`, `logLevel`, `logFormat`), you must call `apply_config()` to apply the changes. The `showTopicId` and `hideEmptyValue` options take effect immediately without calling `apply_config()`.
 
 ## Limitations (for Xmind 8)
 

@@ -67,19 +67,24 @@ print(f'Generated: {output_file}')
 
 ```python
 import logging
-from xmindparser import xmind_to_dict, config
+from xmindparser import xmind_to_dict, config, apply_config
 
-config = {'logName': 'your_log_name',
-          'logLevel': logging.DEBUG,
-          'logFormat': '%(asctime)s %(levelname)-8s: %(message)s',
-          'showTopicId': True, # 包含内部 id，默认为 False
-          'hideEmptyValue': False  # 隐藏空值，默认为 True
-          }
+# 修改配置设置
+config['logName'] = 'your_log_name'
+config['logLevel'] = logging.DEBUG
+config['logFormat'] = '%(asctime)s %(levelname)-8s: %(message)s'
+config['showTopicId'] = True  # 包含内部 id，默认为 False
+config['hideEmptyValue'] = False  # 隐藏空值，默认为 True
+
+# 应用配置更改（日志相关设置需要调用此函数才能生效）
+apply_config()
 
 d = xmind_to_dict('/path/to/your/xmind')
 print(d)
 
 ```
+
+**注意：** 修改日志相关的配置选项（`logName`、`logLevel`、`logFormat`）后，必须调用 `apply_config()` 来应用更改。`showTopicId` 和 `hideEmptyValue` 选项无需调用 `apply_config()` 即可立即生效。
 
 ## 限制（针对 Xmind 8）
 

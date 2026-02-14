@@ -3,8 +3,9 @@ from os import chdir
 from os.path import join, dirname, exists
 from pathlib import Path
 
+import xmindparser
 from xmindparser import *
-from xmindparser.xreader import logger
+from xmindparser import apply_config
 
 chdir(dirname(dirname(__file__)))
 xmind_pro_file = join(dirname(__file__), 'xmind_pro.xmind')
@@ -17,6 +18,9 @@ expected_json_zen_with_id = join(dirname(dirname(__file__)), 'doc/example_zen_wi
 expected_json_2026 = join(dirname(dirname(__file__)), 'doc/example_2026.json')
 expected_json_2026_with_id = join(dirname(dirname(__file__)), 'doc/example_2026_with_id.json')
 set_logger_level(logging.DEBUG)
+
+# Get logger reference
+logger = xmindparser.logger
 
 
 def load_json(f):
@@ -133,5 +137,148 @@ def test_xmind_to_dict_default_2026():
     d = xmind_to_dict(xmind_2026_file)
     logger.info(dumps(d))
     assert load_json(expected_json_2026) == d
+
+
+def test_config_hide_empty_value():
+    """Test hideEmptyValue config option."""
+    # Test with hideEmptyValue = True (default)
+    config['showTopicId'] = False
+    config['hideEmptyValue'] = True
+    d = xmind_to_dict(xmind_pro_file)
+    
+    # Check that empty values are hidden
+    def check_no_empty_values(obj):
+        if isinstance(obj, dict):
+            for key, value in obj.items():
+                # title can be empty string
+                if key != 'title':
+                    assert value, f"Found empty value for key: {key}"
+                if isinstance(value, (dict, list)):
+                    check_no_empty_values(value)
+        elif isinstance(obj, list):
+            for item in obj:
+                check_no_empty_values(item)
+    
+    check_no_empty_values(d)
+    
+    # Test with hideEmptyValue = False
+    config['hideEmptyValue'] = False
+    d2 = xmind_to_dict(xmind_pro_file)
+    
+    # The result with hideEmptyValue=False should have more or equal keys
+    def count_keys(obj):
+        count = 0
+        if isinstance(obj, dict):
+            count += len(obj)
+            for value in obj.values():
+                count += count_keys(value)
+        elif isinstance(obj, list):
+            for item in obj:
+                count += count_keys(item)
+        return count
+    
+    # With hideEmptyValue=False, we should have at least as many keys
+    assert count_keys(d2) >= count_keys(d)
+    
+    # Reset to default
+    config['hideEmptyValue'] = True
+
+
+def test_config_logging_format():
+    """Test that logging config options work correctly."""
+    import io
+    
+    # Create a string buffer to capture log output
+    log_capture = io.StringIO()
+    
+    # Configure custom logging format
+    config['logFormat'] = 'CUSTOM: %(levelname)s - %(message)s'
+    config['logLevel'] = logging.INFO
+    apply_config()
+    
+    # The handler should now be writing to stdout, but we need to check the handler's stream
+    # Get the current logger and its handler
+    current_logger = xmindparser.logger
+    
+    # Temporarily replace the handler's stream
+    original_stream = xmindparser._console_handler.stream
+    xmindparser._console_handler.stream = log_capture
+    
+    try:
+        # Generate some log output
+        current_logger.info("Test message")
+        
+        # Get the captured output
+        log_output = log_capture.getvalue()
+        
+        # Verify custom format is applied
+        assert 'CUSTOM:' in log_output, f"Custom format not found in: {log_output}"
+        assert 'INFO' in log_output, f"Log level not found in: {log_output}"
+        assert 'Test message' in log_output, f"Message not found in: {log_output}"
+        
+    finally:
+        # Restore original stream
+        xmindparser._console_handler.stream = original_stream
+        
+        # Reset to default config
+        config['logFormat'] = '%(asctime)s %(levelname)-8s: %(message)s'
+        config['logLevel'] = None
+        apply_config()
+
+
+def test_config_logging_level():
+    """Test that logLevel config option works correctly."""
+    import io
+    
+    original_stream = xmindparser._console_handler.stream
+    
+    try:
+        # Test with WARNING level (should not show INFO)
+        config['logLevel'] = logging.WARNING
+        apply_config()
+        
+        log_capture = io.StringIO()
+        xmindparser._console_handler.stream = log_capture
+        
+        xmindparser.logger.info("This should not appear")
+        xmindparser.logger.warning("This should appear")
+        
+        log_output = log_capture.getvalue()
+        assert "This should not appear" not in log_output
+        assert "This should appear" in log_output
+        
+        # Test with DEBUG level (should show everything)
+        config['logLevel'] = logging.DEBUG
+        apply_config()
+        
+        log_capture = io.StringIO()
+        xmindparser._console_handler.stream = log_capture
+        
+        xmindparser.logger.debug("Debug message")
+        xmindparser.logger.info("Info message")
+        
+        log_output = log_capture.getvalue()
+        assert "Debug message" in log_output
+        assert "Info message" in log_output
+        
+    finally:
+        xmindparser._console_handler.stream = original_stream
+        config['logLevel'] = None
+        apply_config()
+
+
+def test_config_logging_name():
+    """Test that logName config option works correctly."""
+    # Test with custom log name
+    config['logName'] = 'custom_xmind_logger'
+    apply_config()
+    
+    # Verify logger name is updated
+    current_logger = xmindparser.logger
+    assert current_logger.name == 'custom_xmind_logger'
+    
+    # Reset to default
+    config['logName'] = 'xmindparser'
+    apply_config()
 
 
