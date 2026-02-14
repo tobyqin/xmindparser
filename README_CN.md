@@ -6,6 +6,8 @@
 
 相关项目：[xmind2testlink](https://github.com/tobyqin/xmind2testlink)
 
+English version: [README.md](README.md)
+
 ## 安装
 
 ```shell
